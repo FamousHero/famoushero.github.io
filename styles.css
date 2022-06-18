@@ -1,0 +1,16 @@
+html{
+    background-color: #d68bb1;
+    box-sizing: border-box;
+}
+
+.contents{
+    margin: 30px 20px;
+}
+
+h3{
+    margin-block-end: .3em;
+}
+
+iframe{
+    border: 0px;
+}
