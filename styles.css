@@ -3,14 +3,40 @@ html{
     box-sizing: border-box;
 }
 
-.contents{
-    margin: 30px 20px;
-}
 
-h3{
-    margin-block-end: .3em;
+h2{
+    color:#f8270b;
+    text-decoration-line:underline;
+    text-decoration-color: #000000;
+    text-decoration-thickness: 4px;
 }
 
 iframe{
     border: 0px;
+    width: 550px;
+    height: 315px;
+}
+
+h1, h2{
+    text-align: center;
+}
+
+.wrapper{
+    margin: auto;
+    max-width: 1800px;
+}
+
+.flexbox-container{
+    display:flex;
+    justify-content: center;
+}
+
+.content{
+    border: 2px solid #000000;
+    flex: 1 1 auto;
+    
+}
+
+.flexbox-container .content{
+    padding: 20px;
 }
