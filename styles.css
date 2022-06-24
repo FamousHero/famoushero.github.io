@@ -4,7 +4,7 @@ html{
 }
 
 
-h2{
+.project h2{
     color:#f8270b;
     text-decoration-line:underline;
     text-decoration-color: #000000;
@@ -15,20 +15,18 @@ iframe{
     border: 0px;
     width: 550px;
     height: 315px;
-}
 
-h1, h2{
-    text-align: center;
 }
 
 .wrapper{
     margin: auto;
-    max-width: 1800px;
+ 
 }
 
 .flexbox-container{
     display:flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .content{
@@ -39,4 +37,8 @@ h1, h2{
 
 .flexbox-container .content{
     padding: 20px;
+}
+
+.content.project{
+    text-align: center;
 }
