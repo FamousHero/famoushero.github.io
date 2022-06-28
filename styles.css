@@ -3,7 +3,9 @@ html{
     box-sizing: border-box;
 }
 
-
+h1{
+    text-align: center;
+}
 .project h2{
     color:#f8270b;
     text-decoration-line:underline;
