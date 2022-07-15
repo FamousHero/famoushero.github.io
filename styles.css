@@ -1,34 +1,48 @@
-html{
+body{
     background-color: #d68bb1;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 h1{
     text-align: center;
+    margin: 0;
+    box-sizing: border-box;
+    height: 2.5em;
+    padding: .5em;
 }
-.project h2{
-    color:#f8270b;
-    text-decoration-line:underline;
-    text-decoration-color: #000000;
-    text-decoration-thickness: 4px;
+
+ul{
+    list-style-type: none;
+    margin-top: 20px;
+    padding: 0px;
+    text-align: left;
+
+}
+
+li{
+    padding-left: 20px;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+li:hover{
+    background-color: #808080b2;
 }
 
 iframe{
     border: 0px;
     width: 550px;
     height: 315px;
-
+    
 }
 
-.wrapper{
-    margin: auto;
- 
-}
-
-.flexbox-container{
-    display:flex;
-    justify-content: center;
-    flex-wrap: wrap;
+.project h2{
+    color:#f8270b;
+    text-decoration-line:underline;
+    text-decoration-color: #000000;
+    text-decoration-thickness: 4px;
 }
 
 .content{
@@ -37,10 +51,42 @@ iframe{
     
 }
 
+.content.project{
+    text-align: center;
+}
+
+.flexbox-container{
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .flexbox-container .content{
     padding: 20px;
 }
 
-.content.project{
+.sidebar{
+    float: left;
+    box-sizing: border-box;
+    width: 10em;
+    height: 100vh;
+    margin: 0;
+    border: 2px solid #808080b2;
+    background-color: #eb94c0;
     text-align: center;
+    position: fixed;
 }
+
+.main{
+    width: auto;
+}
+
+.ref-item{
+    display: block;
+}
+.wrapper{
+    margin: auto;
+ 
+}
+
+
