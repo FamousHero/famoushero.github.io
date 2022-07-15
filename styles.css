@@ -78,7 +78,8 @@ iframe{
 }
 
 .main{
-    width: auto;
+    width: calc(100vw - var(--sidebar-width));
+    float: right;
 }
 
 .ref-item{
@@ -90,3 +91,6 @@ iframe{
 }
 
 
+:root{
+--sidebar-width: 10em;
+}
