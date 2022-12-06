@@ -4,11 +4,27 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Rock Paper Scissors</title>      
+        <link rel="stylesheet" href="./Rock-Paper-Scissors.css">  
+        <title>Rock Paper Scissors</title>   
     </head>
     <body style="width: 100vw; height: 100vh;" onload= game() onclick="game()">
         <h1>Rock Paper Scissors</h1>
         <p>Have inspector open. To start a game click anywhere on screen or type "game();" in the console.</p>
-        <script src="tic-tac-toe.js"></script>
+        <script src="Rock-Paper-Scissors.js"></script>
+        <button type="button" class="button player-choice rock" value="rock">Rock</button>
+        <button type="button" class="button player-choice paper" value="paper">Paper</button>
+        <button type="button" class="button player-choice scissors" value="scissors">Scissors</button>
     </body>
+
+    <script>
+        const Buttons = document.getElementsByTagName('button');
+        function testButton(event){
+            console.log('Button Pressed');
+            event.stopPropagation();
+        }
+        for(let i = 0; i < Buttons.length; i++)
+        {
+            Buttons[i].addEventListener('click', testButton);
+        }
+    </script>
 </html>
