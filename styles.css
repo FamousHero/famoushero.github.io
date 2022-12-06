@@ -1,6 +1,12 @@
+html{
+    box-sizing: border-box;
+}
+
+*, *:before, *:after{
+    box-sizing: inherit;    
+}
 body{
     background-color: #d68bb1;
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
@@ -31,14 +37,29 @@ li:hover{
     background-color: #808080b2;
 }
 
+
 iframe{
     border: 0px;
-    width: 550px;
-    height: 315px;
-    
 }
 
-.project h2{
+/*
+    https://www.smashingmagazine.com/2020/03/setting-height-width-images-important-again/
+    aspect-ratio still experimental
+*/
+.responsive-iframe{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+}
+.iframe-container{
+    width: 100%;
+    padding-top: 56.25%;
+    position: relative;
+}
+.project > h2{
     color:#f8270b;
     text-decoration-line:underline;
     text-decoration-color: #000000;
@@ -47,8 +68,8 @@ iframe{
 
 .content{
     border: 2px solid #000000;
-    flex: 0 1 auto;
-    
+    flex: 1 1 auto;
+    width: 33%;
 }
 
 .content.project{
@@ -68,7 +89,7 @@ iframe{
 .sidebar{
     float: left;
     box-sizing: border-box;
-    width: 10em;
+    width: var(--sidebar-width);
     height: 100vh;
     margin: 0;
     border: 2px solid #808080b2;
@@ -82,12 +103,12 @@ iframe{
     float: right;
 }
 
-.ref-item{
+.list-item{
     display: block;
 }
 .wrapper{
     margin: auto;
- 
+    width: 70%;
 }
 
 
