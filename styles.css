@@ -112,6 +112,9 @@ iframe{
     width: 70%;
 }
 
+.center{
+    text-align: center;
+}
 
 :root{
 --sidebar-width: 10em;
