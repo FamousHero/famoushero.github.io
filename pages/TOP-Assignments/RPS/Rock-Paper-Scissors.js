@@ -41,7 +41,7 @@ function playRound(playerSelection)
     console.log(playerSelection + " " + computerSelection + "\n");
 
     if(playerSelection === computerSelection){
-        ResultBox.innerHTML = `Tied!!! You both chose ${playerSelection}`;
+        ResultBox.innerHTML = `<span class="text">Tied!!! You both chose ${playerSelection}</span>`;
     }
 
 
@@ -50,13 +50,13 @@ function playRound(playerSelection)
     || playerSelection === "Scissors" && computerSelection === "Paper")
     {
         playerScore++;
-        ResultBox.innerHTML = `You Win!!! ${playerSelection} beats ${computerSelection}`;
+        ResultBox.innerHTML = `<span class="text">You Win!!! ${playerSelection} beats ${computerSelection}</span>`;
         playerScoreContainer.innerText = playerScore;
     }
     else 
     {
         computerScore++;
-        ResultBox.innerHTML = `You Lose. ${playerSelection} does not beat ${computerSelection}`;
+        ResultBox.innerHTML = `<span class= "text">You Lose. ${playerSelection} does not beat ${computerSelection}</span>`;
         computerScoreContainer.innerText = computerScore;
     }
 }

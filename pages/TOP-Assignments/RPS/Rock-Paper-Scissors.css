@@ -1,0 +1,66 @@
+body{
+    background-image: url('./img/rock-paper-scissors-neon-icons-vector.webp');
+    width: 100vw; 
+    height: 100vh; 
+    background-size:cover;
+}
+.button{
+    min-width: min-content;
+    min-height: fit-content;
+    width: 7vw;
+    height: 5vw;
+    border-radius: 12px;
+    font-size: 2em;
+    font-weight: bold;
+}
+ #player-score{
+    background-color: rgba(255, 192, 203,0.712);
+}
+
+ .text, #computer-score{
+    background-color: rgba(94, 230, 230, 0.712);
+}
+.result-content{
+    font-size: 5vw;
+    text-align: center;
+}
+
+.button-container{
+    display:flex;
+    justify-content: center;
+    gap: 1vw;
+}
+
+.score-wrapper{
+    display: flex;
+    justify-content: space-around;
+
+    
+}
+#player-score, #computer-score{
+    font-size: 5vw;
+
+
+}
+#player-score, #computer-score, .text{
+    border-radius: 10px;
+}
+
+
+
+h1 > .text{
+    background-color: rgb(230, 255, 2);
+    border-radius: 0px;
+
+}
+
+.rock{
+    background-color: rgb(255, 192, 203)
+}
+.paper{
+    background-color: rgb(230, 255, 2);
+}
+
+.scissors{
+    background-color: rgb(94, 230, 2300);
+}
