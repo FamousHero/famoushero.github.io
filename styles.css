@@ -14,9 +14,9 @@ body{
 h1{
     text-align: center;
     margin: 0;
-    box-sizing: border-box;
-    height: 2.5em;
+    height: auto;
     padding: .5em;
+    
 }
 
 ul{
