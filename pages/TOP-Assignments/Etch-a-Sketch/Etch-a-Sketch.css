@@ -1,0 +1,44 @@
+.block{
+    background-color: black;
+    border: 2px solid #ffffff;
+    width: calc((1/var(--grid-width) * 100vw));
+    height: calc((1/var(--grid-height)) * 100vh);
+}
+
+.row{
+    display: flex;
+}
+
+.hovered{
+    background-color: pink;
+
+}
+
+.reset-button{
+    position:absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    height: 2em;
+}
+.button-container{
+    position: relative;
+    width: 100vw;
+    height: 2em;
+}
+:root{
+    --grid-width: 0;
+    --grid-height: 0;
+}
+
+html{
+    box-sizing: border-box;
+}
+ 
+*, *::before, *::after{
+    box-sizing: inherit;
+}
+
+body{
+    margin: 0;
+}
