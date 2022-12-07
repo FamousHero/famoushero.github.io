@@ -7,24 +7,26 @@
         <link rel="stylesheet" href="./Rock-Paper-Scissors.css">  
         <title>Rock Paper Scissors</title>   
     </head>
-    <body style="width: 100vw; height: 100vh;" onload= game() onclick="game()">
+    <body style="width: 100vw; height: 100vh;">
         <h1>Rock Paper Scissors</h1>
-        <p>Have inspector open. To start a game click anywhere on screen or type "game();" in the console.</p>
-        <script src="Rock-Paper-Scissors.js"></script>
-        <button type="button" class="button player-choice rock" value="rock">Rock</button>
-        <button type="button" class="button player-choice paper" value="paper">Paper</button>
-        <button type="button" class="button player-choice scissors" value="scissors">Scissors</button>
+        <p class="result-content" >Choose your Move</p>
+        <div class="button-container">
+            <button type="button" class="button player-choice rock" value="Rock">Rock</button>
+            <button type="button" class="button player-choice paper" value="Paper">Paper</button>
+            <button type="button" class="button player-choice scissors" value="Scissors">Scissors</button>
+        </div>
+        <div class="Scoring">
+            <div class="result-content">
+                Score
+            </div>
+            <div class="score-wrapper">
+                <div id="player-score">0</div>
+                <div id="computer-score">0</div>
+            </div>
+        </div>
     </body>
 
-    <script>
-        const Buttons = document.getElementsByTagName('button');
-        function testButton(event){
-            console.log('Button Pressed');
-            event.stopPropagation();
-        }
-        for(let i = 0; i < Buttons.length; i++)
-        {
-            Buttons[i].addEventListener('click', testButton);
-        }
+    <script src = "Rock-Paper-Scissors.js">
+
     </script>
 </html>

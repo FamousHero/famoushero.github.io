@@ -1,12 +1,78 @@
-const choices = ["rock", "paper", "scissors"]
+/* -------- Variable ---------- */
 
-function game(){
+
+var choices = ["Rock", "Paper", "Scissors"];
+var ResultBox = document.querySelector(".result-content");
+var playerScore = 0;
+var computerScore = 0;
+var playerScoreContainer = document.getElementById("player-score");
+var computerScoreContainer = document.getElementById("computer-score");
+
+
+
+/* --- Page Setup ----- */
+{
+    let Buttons = document.getElementsByTagName('button');
+    for(var i = 0; i < Buttons.length; ++i)
+    {
+
+        Buttons[i].addEventListener('click', (e)=>{
+            playRound(e.target.value);
+            e.stopPropagation();
+        })
+    }
+}
+
+
+
+
+
+
+
+/* ------------ Game Logic --------- */
+
+
+function playRound(playerSelection)
+{
+    const computerSelection = computerPlay();
+    if(playerSelection === null || playerSelection === "")
+        return;
+
+    console.log(playerSelection + " " + computerSelection + "\n");
+
+    if(playerSelection === computerSelection){
+        ResultBox.innerHTML = `Tied!!! You both chose ${playerSelection}`;
+    }
+
+
+    else if(playerSelection === "Rock" && computerSelection === "Scissors" 
+    || playerSelection === "Paper" && computerSelection === "Rock"
+    || playerSelection === "Scissors" && computerSelection === "Paper")
+    {
+        playerScore++;
+        ResultBox.innerHTML = `You Win!!! ${playerSelection} beats ${computerSelection}`;
+        playerScoreContainer.innerText = playerScore;
+    }
+    else 
+    {
+        computerScore++;
+        ResultBox.innerHTML = `You Lose. ${playerSelection} does not beat ${computerSelection}`;
+        computerScoreContainer.innerText = computerScore;
+    }
+}
+
+function computerPlay(){
+    return choices[Math.floor(Math.random()*choices.length)];
+}    
+
+/* depreciated 
+
+function game(playerSelection){
     let playerWins = 0;
     let computerWins = 0;
     for(let i = 0; i < 5; ++i)
     {
-        const playerSelection = playerPlay();
-        const computerSelection = computerPlay();
+        const computerSelection = computerPlay
         const roundWinner = playRound(playerSelection, computerSelection)
         if(roundWinner === undefined)
             return;
@@ -30,34 +96,6 @@ function game(){
     }
 }
 
-function playRound(playerSelection, computerSelection)
-{
-    if(playerSelection === null || playerSelection === "")
-        return;
-
-    console.log(playerSelection + " " + computerSelection + "\n");
-
-    if(playerSelection === computerSelection){
-        return "tie";
-    }
-
-
-    if(playerSelection === "rock" && computerSelection === "scissors" 
-    || playerSelection === "paper" && computerSelection === "rock"
-    || playerSelection === "scissors" && computerSelection === "paper")
-    {
-        return "player";
-    }
-    else 
-    {
-        return "computer";
-    }
-}
-
-function computerPlay(){
-    return choices[Math.floor(Math.random()*choices.length)];
-}    
-
 function playerPlay(){
     const message = "Choose rock, paper, or scissors (use lowercase) \nClick Ok or Cancel to exit.";
     let choice;
@@ -67,4 +105,15 @@ function playerPlay(){
     }
     return choice;
 }
+
+*/
+
+/* ---------- Page Functions ------ */
+
+
+function testButton(event){
+    console.log('Button Pressed');
+    event.stopPropagation();
+}
+
 
