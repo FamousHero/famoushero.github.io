@@ -24,13 +24,16 @@
 .input{
     width: 3em;
 }
+.inputs, .buttons{
+    display: inline-block;
+}
 .padding{
     margin-right: 1em;
 }
 .input-container{
     width: fit-content;
     display: inline-block;
-    transform: translate(-25%);
+    
 }
 .container{
     text-align: center;
@@ -57,4 +60,10 @@ html{
 
 body{
     margin: 0;
+}
+
+@media screen and (min-width: 980px){
+    .input-container{
+        transform: translate(-25%);
+    }
 }
