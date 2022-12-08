@@ -1,12 +1,14 @@
+
+/* grid block classes */
+.row{
+    display: flex;
+}
+
 .block{
     background-color: black;
     border: 2px solid #ffffff;
     width: calc((1/var(--grid-width) * 100vw));
-    height: calc((1/var(--grid-height)) * 100vh);
-}
-
-.row{
-    display: flex;
+    height: calc((1/var(--grid-height)) * (100vh - 1.8em)); /* sub -1.8em to account for input container*/
 }
 
 .hovered{
@@ -14,21 +16,35 @@
 
 }
 
-.reset-button{
-    position:absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, 50%);
+/* input classes */
+.button{
     height: 2em;
+}
+
+.input{
+    width: 3em;
+}
+.padding{
+    margin-right: 1em;
+}
+.input-container{
+    width: fit-content;
+    display: inline-block;
+    transform: translate(-25%);
+}
+.container{
+    text-align: center;
 }
 .button-container{
     position: relative;
     width: 100vw;
     height: 2em;
 }
+
+/* Element properties */
 :root{
-    --grid-width: 0;
-    --grid-height: 0;
+    --grid-width: 16;
+    --grid-height: 16;
 }
 
 html{
