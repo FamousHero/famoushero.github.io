@@ -1,0 +1,39 @@
+.button{
+    width:10vw;
+    height:10vh;
+}
+.wrapper{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.display{
+    width: 30vw;
+    height:10vh;
+    font-size: large;
+    text-align: right;
+}
+
+.row{
+    font-size: 0px;
+}
+
+body{
+    background-color:rgb(63, 70, 78);
+}
+html{
+    box-sizing: border-box;
+}
+
+*, *::after, *::before{
+    box-sizing: inherit;
+}
+
+@media screen and (max-width: 300px) {
+    .wrapper{
+        transform: none;
+        left: 0;
+        top: 0;
+    }
+}
