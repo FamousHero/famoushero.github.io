@@ -6,7 +6,7 @@ var operators = document.querySelectorAll("[data-operator]");
 var display = document.getElementById('display');
 var numbers = document.querySelectorAll("[data-number]");
 var solve = document.getElementById('solve');
-var decimalButton = document.getElementById('decimal');
+var decimalButton = document.querySelector('[data-decimal]');
 var clear = false;
 var decimal =false;
 var depth = 0;
@@ -39,14 +39,12 @@ decimalButton.addEventListener('click', ()=>{decimal = true;});
             let numToAdd = number.innerText;
             if(decimal)
             {
-                numToAdd = '0.'+'0'.repeat(depth) + numToAdd;
-                numToAdd = parseFloat(numToAdd);
-                ++depth;
+                if(!display.value.includes('.'))
+                    display.value += '.'+numToAdd;
+                decimal = false;
+                return;
             }
-            let displayVal = parseFloat(display.value);
-            displayVal = isNaN(displayVal)? 0: displayVal;
-            displayVal = parseFloat((displayVal + numToAdd).toFixed(depth));
-            display.value =displayVal;
+            display.value += numToAdd;
         })
     }
 })
@@ -80,12 +78,17 @@ function preformOperation(operation)
         decimal = true;
         return;
     }
+
     let valueCheck = parseFloat(display.value);
     if(isNaN(valueCheck))
     {
         return;
     }
-    console.log(`value is: ${valueCheck}`);
+    if(operation=='+/-')
+    {
+        display.value = -1 * valueCheck; 
+        return;  
+    }
     if(isNaN(currentCalc))
         currentCalc = valueCheck;
     if(!isNaN(valueCheck) && operationToDo)
@@ -98,21 +101,17 @@ function preformOperation(operation)
         switch(operationToDo)
         {
             case('/'):{currentCalc /= valueCheck; break;}
-            case('*'):{currentCalc *= valueCheck; break;}
+            case('x'):{currentCalc *= valueCheck; break;}
             case('-'):{currentCalc -= valueCheck;  break;}
             case('+'):{currentCalc += valueCheck;  break;}
-            case('+/-'):{currentCalc *= -1; break;}
-
         }
         currentCalc = parseFloat(currentCalc.toFixed(isNaN(fixedPoint)?0:fixedPoint));
         
     }
     clear = true;
     decimal = false;
-    depth = 0;
     display.value = currentCalc;
     operationToDo = operation;
-    console.log(currentCalc);
 }
 
 function solveEquation()
