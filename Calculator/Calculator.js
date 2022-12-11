@@ -2,29 +2,41 @@
 var answer = 0;
 var currentCalc = NaN;
 var prevAnswer = answer;
-var operators = document.querySelectorAll(".button.operator");
+var operators = document.querySelectorAll("[data-operator]");
 var display = document.getElementById('display');
-var buttons = document.getElementsByClassName("button");
+var numbers = document.querySelectorAll("[data-number]");
 var solve = document.getElementById('solve');
 var decimalButton = document.getElementById('decimal');
 var clear = false;
 var decimal =false;
 var depth = 0;
 var operationToDo = '';
+var operatorList = ['*', '/', '+', '-'];
+
+/* Page Setup */
+
+    /* Operator Setup */
 operators.forEach(operator=>{
-    operator.addEventListener('click', ()=>{preformOperation(operator.value)});
+    operator.addEventListener('click', ()=>{
+        if(display.value !== ''){
+        preformOperation(operator.innerText)
+        }
+    });
 });
+    /* Equal Setup */
 solve.addEventListener('click', solveEquation);
+    /* Decimal Setup */
 decimalButton.addEventListener('click', ()=>{decimal = true;});
-[...buttons].forEach(button=>{
-    if(!button.classList.contains('operator'))
-        {button.addEventListener('click', ()=>{
+    /* Number Setup */
+[...numbers].forEach(number=>{
+    if(!number.classList.contains('operator'))
+        {number.addEventListener('click', ()=>{
             if(clear)
             {
                 clear = !clear;
                 display.value = '';
             }
-            let numToAdd = parseInt(button.value);
+            let numToAdd = number.innerText;
             if(decimal)
             {
                 numToAdd = '0.'+'0'.repeat(depth) + numToAdd;
@@ -38,8 +50,29 @@ decimalButton.addEventListener('click', ()=>{decimal = true;});
         })
     }
 })
-console.log("finished");
 
+    /* Keypad Setup */
+document.onkeyup = (e)=>{
+    if(operatorList.includes(e.key) && display.value !== '')
+        preformOperation(e.key);
+    else if(e.key === 'Enter')
+        solveEquation();
+
+}
+document.onkeydown = ()=>
+{
+    if(clear)
+    {
+        clear = !clear;
+        display.value = '';
+    }
+}
+display.addEventListener('keypress',(e)=>{
+    if(e.key === '+' || e.key === '-')
+        e.preventDefault();
+})
+
+/* Functions */
 function preformOperation(operation)
 {
     if(operation == '.')
@@ -48,12 +81,20 @@ function preformOperation(operation)
         return;
     }
     let valueCheck = parseFloat(display.value);
+    if(isNaN(valueCheck))
+    {
+        return;
+    }
     console.log(`value is: ${valueCheck}`);
     if(isNaN(currentCalc))
         currentCalc = valueCheck;
     if(!isNaN(valueCheck) && operationToDo)
     {
-        let fixedPoint = max
+        let fixedPoint = currentCalc.toString().split('.');
+        fixedPoint = (fixedPoint.length > 1)? fixedPoint[1].length: 0;
+        let valueCheckDec = valueCheck.toString().split('.');
+        if(valueCheckDec.length > 1)
+            fixedPoint = Math.max(fixedPoint, valueCheckDec[1].length);
         switch(operationToDo)
         {
             case('/'):{currentCalc /= valueCheck; break;}
@@ -63,6 +104,7 @@ function preformOperation(operation)
             case('+/-'):{currentCalc *= -1; break;}
 
         }
+        currentCalc = parseFloat(currentCalc.toFixed(isNaN(fixedPoint)?0:fixedPoint));
         
     }
     clear = true;
