@@ -97,8 +97,13 @@ iframe{
     background-color: #eb94c0;
     text-align: center;
     position: fixed;
+    transform: translate(-100%);
+    animation: sidebarAnim 1.5s 500ms forwards;
 }
-
+.main
+{
+    animation: mainAnim 2s;
+}
 .main{
     width: calc(100vw - var(--sidebar-width));
     float: right;
@@ -118,4 +123,23 @@ iframe{
 
 :root{
 --sidebar-width: 10em;
+}
+
+@keyframes sidebarAnim {
+    100%
+    {
+        transform: translate(0);
+    }
+}
+@keyframes mainAnim {
+    0%
+    {
+        opacity: 0;
+        transform: translate(0, 100%);
+    }
+    100%
+    {
+        opacity: 1;
+        transform: translate(0);
+    }
 }
