@@ -33,6 +33,7 @@
                             <label for="first-name">First Name</label>
                         </div>
                         <input type="text" id="first-name" pattern="[a-zA-Z][a-z]*" >
+                        <span></span>
                     </div>
                     <div>
                         <div>
@@ -45,8 +46,10 @@
                     <div>
                         <div>
                             <label for="email">Email</label>
+                            
                         </div>
                         <input type="email" id="email" pattern = ".*\.com$">
+                        <span data-display-message="Please enter a valid phone number"></span>
                     </div>
                     <div>
                         <div>
@@ -54,24 +57,30 @@
                         </div>
                         <input type="tel" id="phone-number" 
                         pattern="(\d{3})-?(\d{3})-?(\d{4})" title="Please enter a valid
-                        phone number (ex: 123-456-7890)" >
+                        phone number (ex: 123-456-7890)">
+                        <span data-display-message="Please enter a valid phone number"></span>
+                        
                     </div>
                 </div>
                 <div class="input-row">
                     <div>
                         <div>
                             <label for="password">Password</label>
+                            
                         </div>
                         <input type="password" id="password" minlength="6" pattern="^(?=(?:.*\d){2,})(?=.*[A-Z])(?=.*[@$!%*?&])[a-zA-Z\d@$!%*?&]{6,20}$"
                         maxlength="20" >
+                        <span data-display-message="Please enter a valid phone number"></span>
                     </div>
                     <div>
 
                         <div>
                             <label for="confirm-password">Confirm Password</label>
+                            
                         </div>
                         <input type="password" id="confirm-password" minlength="6" 
                         maxlength="20" pattern="^(?=(?:.*\d){2,})(?=.*[A-Z])(?=.*[@$!%*?&])[a-zA-Z\d@$!%*?&]{6,20}$" >
+                        <span data-display-message="Please enter a valid phone number"></span>
                     </div>
                 </div>
             </form>

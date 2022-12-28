@@ -77,6 +77,10 @@ body{
     padding: 2px;
     font-size: 1.4rem;
 }
+
+
+
+
 .form-container input:invalid{
     border-color: #ff0000;
     border-width: 4px;
@@ -112,23 +116,45 @@ body{
 
 }
 
-input:invalid ~ .test::before{
-    content:"erase";
-}
-
 .input-row{
     display: flex;
     gap: 20px min(10%, 8em);
     flex-wrap: wrap;
     margin: 20px;
 }
-
+.input-row>div
+{
+    position: relative;
+}
 :root{
     --font-size-small: 1rem;
     --font-size-simple-text: 1.2rem;
     --font-size-logo-text: 10rem;
     --font-size-logo-text-small: 6rem;
 }
+input ~ span[data-display-message]{
+    position: absolute;
+    top: -18px;
+    right: 0;
+    
+}
+input ~ span[data-display-message]::before{
+    background-color: #ffff00;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 40;
+    font-size: calc(var(--font-size-small) - 0.2rem);
+    border-radius: 2px;
+    padding: 5px;
+}
+
+input:invalid:not(:focus) ~ span[data-display-message]::before{
+    background-color: #ffff00;
+    content:attr(data-display-message);
+}
+
 @media (max-width: 680px) {
     .sidebar{
         width: 100%;
@@ -158,6 +184,6 @@ input:invalid ~ .test::before{
         font-size: var(--font-size-small);
     }
     .input-row{
-        margin: 0px;
+        margin-bottom: 20px;
     }
 }
