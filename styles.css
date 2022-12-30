@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Roboto:ital,wght@0,400;0,500;1,400&display=swap');
+
+@font-face {
+    font-family: Norse-Bold;
+    src: url(/Fonts/Norse-Bold.otf);
+}
+
 html{
     box-sizing: border-box;
 }
@@ -6,7 +13,7 @@ html{
     box-sizing: inherit;    
 }
 body{
-    background-color: #d68bb1;
+    background-color: var(--main-bg-color);
     margin: 0;
     padding: 0;
 }
@@ -18,7 +25,14 @@ h1{
     padding: .5em;
     
 }
-
+header#info{
+    padding: 10px 20px;
+    font-family: "Courgette", "Sans-Serif";
+    font-size: 1.8rem;
+    font-style: italic;
+    background-color: var(--header-color);
+    color: #A6E4FF;
+}
 ul{
     list-style-type: none;
     margin-top: 20px;
@@ -79,10 +93,16 @@ iframe{
 
 .flexbox-container{
     display:flex;
-    justify-content: center;
     flex-wrap: wrap;
 }
 
+.space-between{
+    justify-content: space-between;
+}
+
+.flexbox-center{
+    justify-content: center;
+}
 .flexbox-container .content{
     padding: 20px;
 }
@@ -94,19 +114,17 @@ iframe{
     height: 100vh;
     margin: 0;
     border: 2px solid #808080b2;
-    background-color: #eb94c0;
+    background-color: var(--sidebar-bg-color);
     text-align: center;
     position: fixed;
     transform: translate(-100%);
     animation: sidebarAnim 1.5s 500ms forwards;
 }
-.main
-{
-    animation: mainAnim 2s;
-}
+
 .main{
     width: calc(100vw - var(--sidebar-width));
     float: right;
+    animation: mainAnim 2s;
 }
 
 .list-item{
@@ -116,13 +134,18 @@ iframe{
     margin: auto;
     width: 70%;
 }
-
-.center{
+.gap-30-10p{
+    gap: max(50px, 10%);
+}
+.text-center{
     text-align: center;
 }
 
 :root{
 --sidebar-width: 10em;
+--main-bg-color: #FFC0CB;
+--sidebar-bg-color: #803945;
+--header-color: #CC99A2;
 }
 
 @keyframes sidebarAnim {
@@ -135,11 +158,26 @@ iframe{
     0%
     {
         opacity: 0;
-        transform: translate(0, 100%);
+        transform: translate(0, 10%);
     }
     100%
     {
         opacity: 1;
         transform: translate(0);
+    }
+}
+
+@media (max-width: 750px)
+{
+    .flexbox-container{
+        flex-direction: column;
+        align-items: center;
+    }
+    .sidebar{
+        display: none;
+    }
+    .main{
+        width: 100%;
+        float: none;
     }
 }

@@ -53,6 +53,7 @@ body{
 .description{
     position: relative;
     height: 40vh;
+    font-weight:bold;
 }
 .description>p{
     position: absolute;
@@ -116,7 +117,9 @@ body{
     text-decoration-line: none;
 
 }
-
+.it{
+    font-style: italic;
+}
 .input-row{
     display: flex;
     gap: 20px min(10%, 8em);
