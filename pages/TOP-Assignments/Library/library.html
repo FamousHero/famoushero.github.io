@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="library.css">
+</head>
+<body>
+    <div class="main">
+        <table id="library">
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Read</th>
+
+            </tr>
+        </table>
+        <div>
+            <button id="new-book">+</button> 
+        </div>
+    </div>
+    <div id="popup" class="hidden">
+        <div id="book-info">
+            <form id='form' action="/library.js">
+                <div class="row"><label class="data" for="title-input">Title</label><input id="title-input" name="title" value=" " class="data" type="text"></div>
+                <div class="row"><label class="data" for="author-input">Author</label><input id="author-input" name="author" class="data" type="text"></div>
+                <div class="pages-row row"><label class="data" for="pages-input">Pages</label><input id="pages-input"name="pages" class="data" type="tel" pattern="[0-9]+"title="Please enter a valid
+                    phone number (ex: 123-456-7890)">
+                    <span data-display-message="Please enter a valid phone number"></span>
+                </div>
+                <div class="row"><label class="data" for="read-input">Read Yet</label><input id="read-input" name="read" class="data" type="checkbox"></div>
+                <div class="button-container">
+                    <button type="submit" form="form" id="add-book">Add Book</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="library.js"></script>
+</html>
