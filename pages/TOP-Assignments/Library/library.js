@@ -32,6 +32,7 @@ bookInfo.addEventListener('click', (e)=>{
     e.stopPropagation();
 });
 
+hidePopup();
 
 /******** Global Variables *********/
 let myLibrary = [];
