@@ -7,9 +7,9 @@
 
 const newBookButton = document.getElementById('new-book');
 newBookButton.addEventListener('click', ()=>{
-    popup.style.display = 'block';
     addBookButton.disabled = false;
     //if both are done in same poll then animation is skipped
+    popup.style.display = 'block';
     setTimeout(()=>popup.classList.remove('hidden'), 1);
 });
 
@@ -32,7 +32,7 @@ bookInfo.addEventListener('click', (e)=>{
     e.stopPropagation();
 });
 
-hidePopup();
+
 
 /******** Global Variables *********/
 
