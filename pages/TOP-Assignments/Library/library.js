@@ -78,7 +78,7 @@ function addBookToLibrary(e){
     let newBook = Book(form.title.value, form.author.value, form.pages.value, form.read.checked);
     myLibrary.push(newBook);
     updateDisplay();
-    //form.reset();
+    form.reset();
     hidePopup();
     
 }

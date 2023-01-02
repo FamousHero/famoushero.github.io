@@ -64,25 +64,6 @@ input[type="checkbox"]{
     width: 20px;
     height: 20px;
 }
-input ~ span[data-display-message]{
-    position: absolute;
-    top: 5px;
-    right: -3px;
-}
-input ~ span[data-display-message]::before{
-    background-color: #ffff00;
-    position: absolute;
-    font-size: calc(var(--font-size-small) - 0.2rem);
-    border-radius: 2px;
-    padding: 1px 5px;
-    white-space: nowrap;
-    font-size: .8em;
-}
-
-input:invalid:not(:focus) ~ span[data-display-message]::before{
-    background-color: #ffff00;
-    content:attr(data-display-message);
-}
 
 #popup{
     width: 100%;
@@ -113,9 +94,6 @@ input:invalid:not(:focus) ~ span[data-display-message]::before{
 }
 .hidden{
     opacity: 0;
-}
-.pages-row{
-    position: relative;
 }
 
 .read-cell{
