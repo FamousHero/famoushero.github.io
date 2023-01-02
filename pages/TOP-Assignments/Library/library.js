@@ -35,6 +35,7 @@ bookInfo.addEventListener('click', (e)=>{
 hidePopup();
 
 /******** Global Variables *********/
+
 let myLibrary = [];
 let readButtons = [];
 const bookProto = {
@@ -77,6 +78,7 @@ function addBookToLibrary(e){
         return;
     let newBook = Book(form.title.value, form.author.value, form.pages.value, form.read.checked);
     myLibrary.push(newBook);
+    setData();
     updateDisplay();
     form.reset();
     hidePopup();
@@ -86,6 +88,7 @@ function addBookToLibrary(e){
 //function for read checkbox. named to allow removeEventListener
 function UpdateRead(){
     this.book.read = !this.book.read;
+    setData();
     updateDisplay();
 }
 
@@ -141,4 +144,18 @@ function createBookElement(book){
 }
 
 
+function setData() {
+    localStorage.setItem(`myLibrary`, JSON.stringify(myLibrary));
+}
 
+function loadLibrary(){
+    if(localStorage.myLibrary)
+    {
+        let objects = localStorage.getItem('myLibrary') // gets information from local storage to use in below loop to create DOM/display
+        objects = JSON.parse(objects);
+        myLibrary = objects;
+        updateDisplay();
+    }
+}
+
+loadLibrary();
