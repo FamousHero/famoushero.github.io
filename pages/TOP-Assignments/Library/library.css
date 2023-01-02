@@ -24,13 +24,6 @@ td{
     font-size: .8em;
     color: #161616;
 }
-#add-book{
-    padding: 8px 30px;
-    box-shadow: 0px 4px 3px 1px #202020;
-    border-radius: 5px;
-    border-width: 1px;
-    font-weight: 600;
-}
 
 .button-container{
     position: absolute;
@@ -38,24 +31,30 @@ td{
     left: 0;
 }
 
+#new-book, #add-book{
+    transition: background-color 150ms ease-in;
+    position: relative;
+    border-radius: 5px;
+    border-width: 1px;
+    box-shadow: var(--button-box-shadow);
+}
+#add-book{
+    padding: 8px 30px;
+    font-weight: 600;
+}
+
 #new-book{
     font-size: 1.8rem;
     width: 50px;
-    border-radius: 4px;
-    border-width: 1px;
     margin: 20px auto;
-    transition: background-color 150ms ease-in,
-    box-shadow 150ms ease-in;
-    position: relative;
     top: 0;
 }
 
-#new-book:hover{
+#new-book:hover, #add-book:hover{
     background-color: #cacaca;
-    box-shadow: 0 0 0 1px black;
 }
 
-#new-book:active{
+#new-book:active, #add-book:active{
     top: 0.1em;
 }
 input{
@@ -92,6 +91,7 @@ input:invalid:not(:focus) ~ span[data-display-message]::before{
     left: 0;
     top: 0;
     background-color: #666666f1;
+    transition: opacity 500ms ease-in;
 }
 #book-info{
     display: table;
@@ -112,9 +112,16 @@ input:invalid:not(:focus) ~ span[data-display-message]::before{
     display: table-cell;
 }
 .hidden{
-    display: none;
+    opacity: 0;
 }
 .pages-row{
     position: relative;
 }
 
+.read-cell{
+    text-align: center;
+}
+
+:root{
+    --button-box-shadow: 0px 4px 3px 1px #202020;;
+}

@@ -14,7 +14,7 @@
                 <th>Title</th>
                 <th>Author</th>
                 <th>Pages</th>
-                <th>Read</th>
+                <th class="read-cell">Read</th>
 
             </tr>
         </table>
@@ -22,14 +22,13 @@
             <button id="new-book">+</button> 
         </div>
     </div>
-    <div id="popup" class="hidden">
+    <div id="popup" class="">
         <div id="book-info">
-            <form id='form' action="/library.js">
-                <div class="row"><label class="data" for="title-input">Title</label><input id="title-input" name="title" value=" " class="data" type="text"></div>
-                <div class="row"><label class="data" for="author-input">Author</label><input id="author-input" name="author" class="data" type="text"></div>
-                <div class="pages-row row"><label class="data" for="pages-input">Pages</label><input id="pages-input"name="pages" class="data" type="tel" pattern="[0-9]+"title="Please enter a valid
-                    phone number (ex: 123-456-7890)">
-                    <span data-display-message="Please enter a valid phone number"></span>
+            <form id='form' action="#">
+                <div class="row"><label class="data" for="title-input">Title</label><input id="title-input" name="title" class="data" type="text" required></div>
+                <div class="row"><label class="data" for="author-input">Author</label><input id="author-input" name="author" class="data" type="text" required></div>
+                <div class="pages-row row"><label class="data" for="pages-input">Pages</label><input id="pages-input"name="pages" class="data" type="tel" pattern="^[0-9]+$"title="Please enter 
+                    the number of pages (i.e. 123)" required>
                 </div>
                 <div class="row"><label class="data" for="read-input">Read Yet</label><input id="read-input" name="read" class="data" type="checkbox"></div>
                 <div class="button-container">
