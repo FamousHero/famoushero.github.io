@@ -2,15 +2,22 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color: var(--background-color);
+}
 .main{
-    margin: 100px 0;
+    margin: 100px auto;
+    width: 80%;
+    padding: 20px;
+    border-radius: 20px;
     font-size: 2rem;
     text-align: center;
+    background-color: azure;
 }
 table#library{
     border-collapse: collapse;
     width: 80%;
-    margin: auto;
+    margin: 20px auto 0;
     text-align: left;
 }
 th{
@@ -26,7 +33,6 @@ td{
 }
 
 .button-container{
-    position: absolute;
     width: 100%;
     left: 0;
 }
@@ -101,5 +107,6 @@ input[type="checkbox"]{
 }
 
 :root{
-    --button-box-shadow: 0px 4px 3px 1px #202020;;
+    --button-box-shadow: 0px 4px 3px 1px #202020;
+    --background-color: #F5F5DC;
 }
