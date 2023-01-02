@@ -32,7 +32,8 @@ bookInfo.addEventListener('click', (e)=>{
     e.stopPropagation();
 });
 
-
+const clearLibraryButton = document.getElementById('clear-library');
+clearLibraryButton.addEventListener('click', clearData);
 
 /******** Global Variables *********/
 
@@ -147,7 +148,11 @@ function createBookElement(book){
 function setData() {
     localStorage.setItem(`myLibrary`, JSON.stringify(myLibrary));
 }
-
+function clearData(){
+    localStorage.removeItem('myLibrary');
+    myLibrary = [];
+    updateDisplay();
+}
 function loadLibrary(){
     if(localStorage.myLibrary)
     {

@@ -7,7 +7,7 @@ body{
 }
 .main{
     margin: 100px auto;
-    width: 80%;
+    width:fit-content;
     padding: 20px;
     border-radius: 20px;
     font-size: 2rem;
@@ -16,7 +16,6 @@ body{
 }
 table#library{
     border-collapse: collapse;
-    width: 80%;
     margin: 20px auto 0;
     text-align: left;
 }
@@ -37,7 +36,14 @@ td{
     left: 0;
 }
 
-#new-book, #add-book{
+.button-row{
+    display: flex;
+    margin: 20px auto;
+    justify-content: center;
+    gap: 30px;
+
+}
+#new-book, #add-book, #clear-library{
     transition: background-color 150ms ease-in;
     position: relative;
     border-radius: 5px;
@@ -48,19 +54,21 @@ td{
     padding: 8px 30px;
     font-weight: 600;
 }
-
+#clear-library{
+    font-weight: 700;
+    padding: 15px;
+}
 #new-book{
     font-size: 1.8rem;
     width: 50px;
-    margin: 20px auto;
     top: 0;
 }
 
-#new-book:hover, #add-book:hover{
+#new-book:hover, #add-book:hover, #clear-library:hover{
     background-color: #cacaca;
 }
 
-#new-book:active, #add-book:active{
+#new-book:active, #add-book:active, #clear-library:active{
     top: 0.1em;
 }
 input{
@@ -109,4 +117,10 @@ input[type="checkbox"]{
 :root{
     --button-box-shadow: 0px 4px 3px 1px #202020;
     --background-color: #F5F5DC;
+}
+
+@media (max-width: 500px){
+    table#library{
+        font-size: .8rem;
+    }
 }
