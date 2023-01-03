@@ -1,18 +1,20 @@
 .button{
-    width:10vw;
-    height:10vh;
+    width:100px;
+    height:100px;
 }
 .wrapper{
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    width: 400px;
 }
 .display{
-    width: 30vw;
-    height:10vh;
-    font-size: large;
+    width: 300px;
+    height:100px;
+    font-size: medium;
     text-align: right;
+    border: 0px;
 }
 
 .row{
