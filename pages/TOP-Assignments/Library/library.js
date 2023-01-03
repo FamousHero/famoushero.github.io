@@ -153,7 +153,7 @@ function clearData(){
     myLibrary = [];
     updateDisplay();
 }
-function loadLibrary(){
+(()=>{
     if(localStorage.myLibrary)
     {
         let objects = localStorage.getItem('myLibrary') // gets information from local storage to use in below loop to create DOM/display
@@ -161,6 +161,4 @@ function loadLibrary(){
         myLibrary = objects;
         updateDisplay();
     }
-}
-
-loadLibrary();
+})();
