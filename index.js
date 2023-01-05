@@ -1,3 +1,4 @@
+//#region Page Setup
 document.addEventListener('beforeunload', (e)=>{
     window.scrollTo(0,0)
 });
@@ -6,11 +7,33 @@ document.addEventListener('beforeunload', (e)=>{
         history.scrollRestoration = 'manual';
     }
 })();
+
+var showcaseButtons = document.querySelectorAll('.showcase-button');
+var showcaseHandler = createHandler('showcase', '#Projects', showcaseButtons.length);
+showcaseHandler.createEventListeners(showcaseButtons);
+showcaseHandler.autoScroll(1);
+
+/* TODO: only needs buttons when screen width too small,
+ * also need to make the translate depend on divs in flexContainer
+
+var odinButtons = document.querySelectorAll('.odin-button');
+var odinHandler = createHander('odin', '#TOP-Projects', odinButtons.length);
+odinHandler.createEventListeners(odinButtons);
+odinHandler.autoScroll(1);
+console.log(odinHandler);
+console.log(showcaseHandler);
+*/
+
+//#endregion
+
+
+//#region Functions and Factory Functions
+
 /**
  * 
- * @param {HTML Element} startButton 
+ * @param {HTMLElement} startButton 
  * @param {string} type 
- * @param {HTML Element} flexContainer 
+ * @param {HTMLElement} flexContainer 
  * @returns 
  */
 var buttonHandlerProto = {
@@ -48,6 +71,15 @@ var buttonHandlerProto = {
         this.flexContainer.style.transform = 'translate(0,' + (-33 * (Number(index)-1)) + '%)';
     }
 }
+
+/**
+ * 
+ * @param {HTMLElement} startButton 
+ * @param {string} type 
+ * @param {HTMLElement} flexContainer 
+ * @param {Number} maxButtons 
+ * @returns 
+ */
 var ButtonHandler = function(startButton, type, flexContainer, maxButtons){
     let currentButton = startButton;
     let TimeoutID = null;
@@ -61,25 +93,13 @@ var ButtonHandler = function(startButton, type, flexContainer, maxButtons){
  * @param {string} id
  * @return {ButtonHandler}
  */
-function createHander(type, containerID, maxButtons){
+function createHandler(type, containerID, maxButtons){
     let startButton = document.getElementById(type+'1');
     let container = document.querySelector(containerID+ ' .inner-section .flexbox-container');
     return ButtonHandler(startButton, type, container, maxButtons)
 }
-var showcaseButtons = document.querySelectorAll('.showcase-button');
-var showcaseHandler = ButtonHandler( document.getElementById('showcase'+'1'), 'showcase', 
-    document.querySelector('#Projects .inner-section .flexbox-container'), showcaseButtons.length);
-console.log(showcaseHandler);
-showcaseHandler.createEventListeners(showcaseButtons);
-showcaseHandler.autoScroll(1);
 
-/* TODO: only needs buttons when screen width too small,
- * also need to make the translate depend on divs in flexContainer
+//#endregion
 
-var odinButtons = document.querySelectorAll('.odin-button');
-var odinHandler = createHander('odin', '#TOP-Projects', odinButtons.length);
-odinHandler.createEventListeners(odinButtons);
-odinHandler.autoScroll(1);
-console.log(odinHandler);
-console.log(showcaseHandler);
-*/
+
+
