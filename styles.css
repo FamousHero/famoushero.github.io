@@ -74,9 +74,6 @@ iframe{
 footer div .flexbox-container{
     gap: 20px;
 }
-footer div .flexbox-container a{
-    width: fit-content;
-}
 #info{
     padding: 10px 20px;
     font-family: "Courgette", "Sans-Serif";
@@ -209,8 +206,8 @@ footer div .flexbox-container a{
 
 }
 .socials{
-    width: 25px;
-    height: 25px;
+    width: 40px;
+    height: 40px;
 }
 .socials:hover{
     animation: socialAnim 500ms;
@@ -294,6 +291,9 @@ font-size: 1.5rem;
     .iframe-container{
         width: min(450px, 100%)
     }
+    footer h2{
+        font-size: 0.7rem;
+    }
 }
 @media (max-width: 500px) {
     footer>.flexbox-container{
@@ -301,10 +301,20 @@ font-size: 1.5rem;
         gap: 25px;
     }
     #Projects .inner-section{
-        height: 200px;
+        height: 300px;
     }
     #TOP-Projects .inner-section{
         height: 400px;
+    }
+    .inner-section{
+        padding: 0;
+
+    }
+    .flexbox-container{
+        padding: 0;
+    }
+    .showcase{
+        width: 200px;
     }
 }
 @media (max-width: 450px){
