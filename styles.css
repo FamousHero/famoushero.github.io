@@ -72,7 +72,10 @@ iframe{
     border: 0px;
 }
 footer div .flexbox-container{
-    gap: 15px;
+    gap: 20px;
+}
+footer div .flexbox-container a{
+    width: fit-content;
 }
 #info{
     padding: 10px 20px;
@@ -159,7 +162,7 @@ footer div .flexbox-container{
     transition: 2s;
 }
 .logos{
-    width: 25px;
+    width: 40px;
     height: auto;
 }
 .list-item{
