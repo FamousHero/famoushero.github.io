@@ -41,7 +41,7 @@ showcaseButtons.forEach(button => {
 });
 
 function transformFlexbox(index){
-    firstShowcase.style.transform = 'translate(0,' + (-500 * (Number(index)-1)) + 'px)';
+    firstShowcase.style.transform = 'translate(0,' + (-33 * (Number(index)-1)) + '%)';
 }
 /*
 #showcase1:checked  ~ div.first{
