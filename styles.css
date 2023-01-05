@@ -80,22 +80,8 @@ footer div .flexbox-container{
     background-color: var(--header-color);
     color: var(--blue-text);
 }
-#showcase1:checked  ~ div.first{
-    margin-top: 0;
-}
-#showcase2:checked ~ div.first{
-    margin-top: -450px;
-}
-#showcase3:checked ~ div.first{
-    margin-top: -900px;
-}
-#showcase4:checked ~ div.first{
-    margin-left: 0;
-}
 
-#showcase1:checked ~ div.nav-auto>.auto-button1,
-#showcase2:checked ~ div.nav-auto>.auto-button2,
-#showcase3:checked ~ div.nav-auto>.auto-button3{
+.checked{
     background-color: var(--main-bg-color);
 }
 .sidebar{
@@ -162,7 +148,13 @@ footer div .flexbox-container{
     overflow: auto;
     width: clamp(750px, 50%, 1000px);
     margin: auto;
-
+    position: relative;
+}
+.inner-section>.flexbox-container{
+    position: absolute;
+    left: 0;
+    right: 0;
+    transition: 2s;
 }
 .logos{
     width: 25px;
@@ -187,7 +179,7 @@ footer div .flexbox-container{
     padding: 10px;
     border-radius: 20px;
     cursor: pointer;
-    transition: 300ms;
+    transition: 1s;
 
 }
 .manual-button:not(:last-child), .nav-auto div:not(:last-child){
@@ -200,7 +192,6 @@ footer div .flexbox-container{
     text-align: center;
     margin-bottom: 60px;
     margin-top: 20px;
-    transition: 2s;
 }
 input[name='showcase-button']{
     display: none;
