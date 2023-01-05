@@ -187,13 +187,16 @@ footer div .flexbox-container{
 .manual-button:not(:last-child), .nav-auto div:not(:last-child){
     margin-right: 40px;
 }
+.page-link{
+    color: var(--blue-text);
+}
+.page-link:hover{
+    color: #ffffff;
+}
 .showcase{
     text-align: center;
     margin-bottom: 90px;
     margin-top: 20px;
-}
-input[name='showcase-button']{
-    display: none;
 }
 .showcase>h2{
     color: var(--blue-text);
