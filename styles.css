@@ -35,6 +35,7 @@ section{
     margin-bottom: 40px;
     padding: 0px 40px 40px 40px;
     border-radius: 5px;
+    position: relative;
 }
 
 footer{
@@ -43,6 +44,9 @@ footer{
     font-size: large;
     padding: 10px;
     border-radius: var(--section-border-radius);
+}
+form{
+    height: 100vh;
 }
 footer>div{
     padding: 30px;
@@ -76,7 +80,24 @@ footer div .flexbox-container{
     background-color: var(--header-color);
     color: var(--blue-text);
 }
+#showcase1:checked  ~ div.first{
+    margin-top: 0;
+}
+#showcase2:checked ~ div.first{
+    margin-top: -450px;
+}
+#showcase3:checked ~ div.first{
+    margin-top: -900px;
+}
+#showcase4:checked ~ div.first{
+    margin-left: 0;
+}
 
+#showcase1:checked ~ div.nav-auto>.auto-button1,
+#showcase2:checked ~ div.nav-auto>.auto-button2,
+#showcase3:checked ~ div.nav-auto>.auto-button3{
+    background-color: var(--main-bg-color);
+}
 .sidebar{
     float: left;
     box-sizing: border-box;
@@ -141,6 +162,7 @@ footer div .flexbox-container{
     overflow: auto;
     width: clamp(750px, 50%, 1000px);
     margin: auto;
+
 }
 .logos{
     width: 25px;
@@ -152,10 +174,36 @@ footer div .flexbox-container{
     padding: 16px;
     text-decoration: none;
 }
+.nav-manual, .nav-auto{
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+}
+.manual-button, .nav-auto div{
+    border: 3px solid var(--main-bg-color);
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 300ms;
+
+}
+.manual-button:not(:last-child), .nav-auto div:not(:last-child){
+    margin-right: 40px;
+}
+.manual-button:hover{
+    background-color: var(--main-bg-color);
+}
 .showcase{
     text-align: center;
     margin-bottom: 60px;
     margin-top: 20px;
+    transition: 2s;
+}
+input[name='showcase-button']{
+    display: none;
 }
 .showcase>h2{
     color: var(--blue-text);
@@ -192,7 +240,7 @@ footer div .flexbox-container{
 font-size: 1.5rem;
 }
 
-::-webkit-scrollbar{
+.inner-section::-webkit-scrollbar{
     display: none;
 }
 @keyframes sidebarAnim {
