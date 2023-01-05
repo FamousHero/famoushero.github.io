@@ -144,7 +144,7 @@ footer div .flexbox-container{
     padding: 20px;
     border-radius: var(--section-border-radius);
     height: 600px;
-    background-color: #CC99A2;
+    background-color: var(--header-color);
     overflow: hidden;
     width: clamp(750px, 50%, 1000px);
     margin: auto;
@@ -184,9 +184,6 @@ footer div .flexbox-container{
 }
 .manual-button:not(:last-child), .nav-auto div:not(:last-child){
     margin-right: 40px;
-}
-.manual-button:hover{
-    background-color: var(--main-bg-color);
 }
 .showcase{
     text-align: center;
@@ -311,5 +308,11 @@ font-size: 1.5rem;
     }
     h1{
         padding: 5px;
+    }
+}
+
+@media (hover: hover){
+    .manual-button:hover{
+        background-color: var(--main-bg-color);
     }
 }
