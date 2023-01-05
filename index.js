@@ -8,22 +8,6 @@ document.addEventListener('beforeunload', (e)=>{
     }
 })();
 
-var showcaseButtons = document.querySelectorAll('.showcase-button');
-var showcaseHandler = createHandler('showcase', '#Projects', showcaseButtons.length);
-showcaseHandler.createEventListeners(showcaseButtons);
-showcaseHandler.autoScroll(1);
-
-/* TODO: only needs buttons when screen width too small,
- * also need to make the translate depend on divs in flexContainer
-
-var odinButtons = document.querySelectorAll('.odin-button');
-var odinHandler = createHander('odin', '#TOP-Projects', odinButtons.length);
-odinHandler.createEventListeners(odinButtons);
-odinHandler.autoScroll(1);
-console.log(odinHandler);
-console.log(showcaseHandler);
-*/
-
 //#endregion
 
 
@@ -80,7 +64,7 @@ var buttonHandlerProto = {
  * @param {Number} maxButtons 
  * @returns 
  */
-var ButtonHandler = function(startButton, type, flexContainer, maxButtons){
+function ButtonHandler(startButton, type, flexContainer, maxButtons){
     let currentButton = startButton;
     let TimeoutID = null;
     let index = 2;
@@ -101,5 +85,19 @@ function createHandler(type, containerID, maxButtons){
 
 //#endregion
 
+var showcaseButtons = document.querySelectorAll('.showcase-button');
+var showcaseHandler = createHandler('showcase', '#Projects', showcaseButtons.length);
+showcaseHandler.createEventListeners(showcaseButtons);
+showcaseHandler.autoScroll(1);
 
+/* TODO: only needs buttons when screen width too small,
+ * also need to make the translate depend on divs in flexContainer
+
+var odinButtons = document.querySelectorAll('.odin-button');
+var odinHandler = createHander('odin', '#TOP-Projects', odinButtons.length);
+odinHandler.createEventListeners(odinButtons);
+odinHandler.autoScroll(1);
+console.log(odinHandler);
+console.log(showcaseHandler);
+*/
 
