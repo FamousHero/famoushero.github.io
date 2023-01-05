@@ -6,54 +6,80 @@ document.addEventListener('beforeunload', (e)=>{
         history.scrollRestoration = 'manual';
     }
 })();
+/**
+ * 
+ * @param {HTML Element} startButton 
+ * @param {string} type 
+ * @param {HTML Element} flexContainer 
+ * @returns 
+ */
+var buttonHandlerProto = {
+    createEventListeners(buttonElements){
+        buttonElements.forEach(button => {
+            button.addEventListener('click', ()=>{
+                this.currentButton.classList.remove('checked');
+                this.currentButton = button;
+                button.classList.add('checked');
+                this.index = button.dataset.showcase;
+                this.transformFlexbox(this.index);
+                clearTimeout(this.TimeoutID);
+                //functions are objects so calling a function within a function
+                //makes this refer to global, solve this by binding this to current object
+                this.TimeoutID = setTimeout(this.autoScroll.bind(this), 4000, button.dataset.nextShowcase);
+            })
+        })
+    },
+    autoScroll(index){
+        let previndex = index-1;
+        if(previndex < 1)
+            previndex = this.maxButtons;
+        document.getElementById(this.type+previndex).classList.remove('checked');
+        
+        document.getElementById(this.type+index).classList.add('checked');
+        this.transformFlexbox(index);
+        this.currentButton = document.getElementById(this.type+index);
+        //need to refer to the global variable and set it to local+1
+        this.index = parseInt(index)+1;
+        if(this.index > this.maxButtons)
+            this.index = 1;
+        this.TimeoutID = setTimeout(this.autoScroll.bind(this), 4000, this.index);
+    },
+    transformFlexbox(index){
+        this.flexContainer.style.transform = 'translate(0,' + (-33 * (Number(index)-1)) + '%)';
+    }
+}
+var ButtonHandler = function(startButton, type, flexContainer, maxButtons){
+    let currentButton = startButton;
+    let TimeoutID = null;
+    let index = 2;
 
-var index = 2;
-var showcaseTimeoutID = null;
-var currShowcaseButton = document.getElementById('showcase1');
-var firstShowcase = document.querySelector('#Projects .inner-section .flexbox-container');
-function autoScroll(index){
-    let previndex = index-1;
-    if(previndex < 1)
-        previndex = 3;
-    document.getElementById('showcase'+previndex).classList.remove('checked');
-    document.getElementById('showcase'+index).classList.add('checked');
-    transformFlexbox(index);
-    currShowcaseButton = document.getElementById('showcase'+index);
-    //need to refer to the global variable and set it to local+1
-    this.index = parseInt(index)+1;
-    if(this.index > 3)
-        this.index = 1;
-    showcaseTimeoutID = setTimeout(autoScroll, 4000, this.index);
-}
-showcaseTimeoutID = setTimeout(autoScroll, 4000, index);
+    return Object.assign(Object.create(buttonHandlerProto),{type, flexContainer, maxButtons, currentButton, TimeoutID, index});
 
-var showcaseButtons = document.querySelectorAll('.manual-button');
-showcaseButtons.forEach(button => {
-    button.addEventListener('click', ()=>{
-        currShowcaseButton.classList.remove('checked');
-        currShowcaseButton = button;
-        button.classList.add('checked');
-        let index = button.dataset.showcase;
-        transformFlexbox(index);
-        clearTimeout(showcaseTimeoutID);
-        showcaseTimeoutID = setTimeout(autoScroll, 4000, button.dataset.nextShowcase);
-    })
-});
+}
+/** 
+ * @param {string} type
+ * @param {string} id
+ * @return {ButtonHandler}
+ */
+function createHander(type, containerID, maxButtons){
+    let startButton = document.getElementById(type+'1');
+    let container = document.querySelector(containerID+ ' .inner-section .flexbox-container');
+    return ButtonHandler(startButton, type, container, maxButtons)
+}
+var showcaseButtons = document.querySelectorAll('.showcase-button');
+var showcaseHandler = ButtonHandler( document.getElementById('showcase'+'1'), 'showcase', 
+    document.querySelector('#Projects .inner-section .flexbox-container'), showcaseButtons.length);
+console.log(showcaseHandler);
+showcaseHandler.createEventListeners(showcaseButtons);
+showcaseHandler.autoScroll(1);
 
-function transformFlexbox(index){
-    firstShowcase.style.transform = 'translate(0,' + (-33 * (Number(index)-1)) + '%)';
-}
-/*
-#showcase1:checked  ~ div.first{
-    margin-top: 0;
-}
-#showcase2:checked ~ div.first{
-    margin-top: -450px;
-}
-#showcase3:checked ~ div.first{
-    margin-top: -900px;
-}
-#showcase4:checked ~ div.first{
-    margin-left: 0;
-}
+/* TODO: only needs buttons when screen width too small,
+ * also need to make the translate depend on divs in flexContainer
+
+var odinButtons = document.querySelectorAll('.odin-button');
+var odinHandler = createHander('odin', '#TOP-Projects', odinButtons.length);
+odinHandler.createEventListeners(odinButtons);
+odinHandler.autoScroll(1);
+console.log(odinHandler);
+console.log(showcaseHandler);
 */

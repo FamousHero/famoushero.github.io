@@ -5,8 +5,10 @@
     src: url(/Fonts/Norse-Bold.otf);
 }
 
+/*smooth scrolling for nav tags, does not support IE or safari*/
 html{
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 *, *:before, *:after{
@@ -187,7 +189,7 @@ footer div .flexbox-container{
 }
 .showcase{
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 90px;
     margin-top: 20px;
 }
 input[name='showcase-button']{
