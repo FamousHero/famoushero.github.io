@@ -30,9 +30,11 @@ var buttonHandlerProto = {
                 this.index = button.dataset.showcase;
                 this.transformFlexbox(this.index);
                 clearTimeout(this.TimeoutID);
+                if(!iframeMonitor)
+                    iframeMonitor = monitorFunction();
                 //functions are objects so calling a function within a function
                 //makes this refer to global, solve this by binding this to current object
-                this.TimeoutID = setTimeout(this.autoScroll.bind(this), 4000, button.dataset.nextShowcase);
+                this.TimeoutID = setTimeout(this.autoScroll.bind(this), 14000, button.dataset.nextShowcase);
             })
         })
     },
@@ -49,10 +51,10 @@ var buttonHandlerProto = {
         this.index = parseInt(index)+1;
         if(this.index > this.maxButtons)
             this.index = 1;
-        this.TimeoutID = setTimeout(this.autoScroll.bind(this), 4000, this.index);
+        this.TimeoutID = setTimeout(this.autoScroll.bind(this), 7000, this.index);
     },
     transformFlexbox(index){
-        this.flexContainer.style.transform = 'translate(0,' + (-33 * (Number(index)-1)) + '%)';
+        this.flexContainer.style.transform = 'translate('+(-33 * (Number(index)-1)) + '%,0)';
     }
 }
 
@@ -87,6 +89,17 @@ function createHandler(type, containerID, maxButtons){
 
 var showcaseButtons = document.querySelectorAll('.showcase-button');
 var showcaseHandler = createHandler('showcase', '#Projects', showcaseButtons.length);
+function monitorFunction(){
+    return setInterval(()=>{
+        let elem = document.activeElement;
+        if (elem && elem.tagName == 'IFRAME'){
+            clearTimeout(showcaseHandler.TimeoutID);
+            clearInterval(iframeMonitor);
+            iframeMonitor = null;
+        }
+    }, 100);
+}
+var iframeMonitor = monitorFunction();
 showcaseHandler.createEventListeners(showcaseButtons);
 showcaseHandler.autoScroll(1);
 

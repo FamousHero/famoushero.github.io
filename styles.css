@@ -133,8 +133,6 @@ footer div .flexbox-container{
 
 .flexbox-container{
     display:flex;
-    flex-wrap: wrap;
-    padding: 20px;
 }
 .flexbox-center{
     justify-content: center;
@@ -192,6 +190,10 @@ footer div .flexbox-container{
 }
 .page-link:hover{
     color: #ffffff;
+}
+#Projects>.inner-section>.flexbox-container{
+    width: 300%;
+    justify-content: space-around;
 }
 .showcase{
     text-align: center;
