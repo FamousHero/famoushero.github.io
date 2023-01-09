@@ -32,7 +32,6 @@ var buttonHandlerProto = {
                 clearTimeout(this.TimeoutID);
                 if(!iframeMonitor){
                     iframeMonitor = monitorFunction();
-                    console.log(activeIFrame);
                     activeIFrame.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'pauseVideo', args: ''}), '*');
                 }
                 //functions are objects so calling a function within a function
@@ -106,10 +105,13 @@ function monitorFunction(){
 var iframeMonitor = monitorFunction();
 var activeIFrame = null;
 showcaseHandler.createEventListeners(showcaseButtons);
-showcaseHandler.autoScroll(1);
+//touchstart intercepted on iOS when clicking iframe
+//results in continuted autoscroll so just toggle it when not iOS
+if(!iOS())
+    showcaseHandler.autoScroll(1);
 
 /* TODO: only needs buttons when screen width too small,
- * also need to make the translate depend on divs in flexContainer
+* also need to make the translate depend on divs in flexContainer
 */
 var odinButtons = document.querySelectorAll('.odin-button');
 var odinHandler = createHandler('odin', '#TOP-Projects', odinButtons.length);
