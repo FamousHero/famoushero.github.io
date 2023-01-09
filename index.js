@@ -30,8 +30,11 @@ var buttonHandlerProto = {
                 this.index = button.dataset.showcase;
                 this.transformFlexbox(this.index);
                 clearTimeout(this.TimeoutID);
-                if(!iframeMonitor)
+                if(!iframeMonitor){
                     iframeMonitor = monitorFunction();
+                    console.log(activeIFrame);
+                    activeIFrame.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'pauseVideo', args: ''}), '*');
+                }
                 //functions are objects so calling a function within a function
                 //makes this refer to global, solve this by binding this to current object
                 this.TimeoutID = setTimeout(this.autoScroll.bind(this), 14000, button.dataset.nextShowcase);
@@ -54,7 +57,7 @@ var buttonHandlerProto = {
         this.TimeoutID = setTimeout(this.autoScroll.bind(this), 7000, this.index);
     },
     transformFlexbox(index){
-        this.flexContainer.style.transform = 'translate('+(-33 * (Number(index)-1)) + '%,0)';
+        this.flexContainer.style.transform = 'translate('+(-33.33 * (Number(index)-1)) + '%,0)';
     }
 }
 
@@ -96,21 +99,20 @@ function monitorFunction(){
             clearTimeout(showcaseHandler.TimeoutID);
             clearInterval(iframeMonitor);
             iframeMonitor = null;
+            activeIFrame = elem;
         }
     }, 100);
 }
 var iframeMonitor = monitorFunction();
+var activeIFrame = null;
 showcaseHandler.createEventListeners(showcaseButtons);
 showcaseHandler.autoScroll(1);
 
 /* TODO: only needs buttons when screen width too small,
  * also need to make the translate depend on divs in flexContainer
-
-var odinButtons = document.querySelectorAll('.odin-button');
-var odinHandler = createHander('odin', '#TOP-Projects', odinButtons.length);
-odinHandler.createEventListeners(odinButtons);
-odinHandler.autoScroll(1);
-console.log(odinHandler);
-console.log(showcaseHandler);
 */
+var odinButtons = document.querySelectorAll('.odin-button');
+var odinHandler = createHandler('odin', '#TOP-Projects', odinButtons.length);
+odinHandler.createEventListeners(odinButtons);
+setTimeout(()=>odinHandler.autoScroll(1), 2000);
 

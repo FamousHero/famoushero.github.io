@@ -185,13 +185,17 @@ footer div .flexbox-container{
 .manual-button:not(:last-child), .nav-auto div:not(:last-child){
     margin-right: 40px;
 }
+.odin-projects{
+    text-align: center;
+    flex: 0 0 600px;
+}
 .page-link{
     color: var(--blue-text);
 }
 .page-link:hover{
     color: #ffffff;
 }
-#Projects>.inner-section>.flexbox-container{
+.inner-section>.flexbox-container{
     width: 300%;
     justify-content: space-around;
 }
@@ -296,14 +300,23 @@ font-size: 1.5rem;
     footer h2{
         font-size: 0.7rem;
     }
+    .odin-projects{
+        flex: 0 0 400px;
+    }
+    #TOP-Projects .inner-section{
+        height: 400px;
+    }
 }
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     footer>.flexbox-container{
         flex-direction: column;
         gap: 25px;
     }
     #Projects .inner-section{
-        height: 300px;
+        height: 330px;
+    }
+    #Projects .inner-section .flexbox-container{
+        align-items: center;
     }
     #TOP-Projects .inner-section{
         height: 400px;
@@ -316,7 +329,11 @@ font-size: 1.5rem;
         padding: 0;
     }
     .showcase{
-        width: 200px;
+        width: 250px;
+        margin-top: 0;
+    }
+    .odin-projects{
+        flex: 0 0 250px;
     }
 }
 @media (max-width: 450px){
