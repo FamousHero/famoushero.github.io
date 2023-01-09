@@ -59,6 +59,19 @@ var buttonHandlerProto = {
         this.flexContainer.style.transform = 'translate('+(-33.33 * (Number(index)-1)) + '%,0)';
     }
 }
+function iOS() {
+    return [
+      'iPad Simulator',
+      'iPhone Simulator',
+      'iPod Simulator',
+      'iPad',
+      'iPhone',
+      'iPod'
+    ].includes(navigator.platform)
+    // iPad on iOS 13 detection
+    || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+  }
+
 
 /**
  * 
@@ -107,8 +120,9 @@ var activeIFrame = null;
 showcaseHandler.createEventListeners(showcaseButtons);
 //touchstart intercepted on iOS when clicking iframe
 //results in continuted autoscroll so just toggle it when not iOS
-if(!iOS())
+if(!iOS()){
     showcaseHandler.autoScroll(1);
+}
 
 /* TODO: only needs buttons when screen width too small,
 * also need to make the translate depend on divs in flexContainer
