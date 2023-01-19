@@ -3,10 +3,10 @@ import Phone from './Phone'
 import Email from './Email'
 import './generalInfo.css'
 
-export default function GeneralInfo(){
+export default function GeneralInfo({titleClass}){
     return (
-        <div className="general-info">
-            <h2 className="title">General Info</h2>
+        <div>
+            <h2 className={titleClass}>General Info</h2>
             <Name />
             <Phone />
             <Email />
