@@ -1,10 +1,10 @@
 
 
-export default function Name(){
+export default function Name({forwardRef}){
     return (
         <div>
             <label htmlFor="name">Name: </label>
-            <input id="name"></input>
+            <input ref={forwardRef} id="name"></input>
         </div>
     )
 }

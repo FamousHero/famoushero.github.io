@@ -1,10 +1,10 @@
 
 
-export default function Phone(){
+export default function Phone({forwardRef}){
     return (
         <div>
             <label htmlFor="phone">Phone #: </label>
-            <input type="text" id="phone" />
+            <input ref={forwardRef} type="text" id="phone" />
         </div>
     )
 }
