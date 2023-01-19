@@ -1,10 +1,10 @@
-import Dates from './Dates'
-import './practicalExp.css'
+import Dates from '../Dates'
+import '../dates.css'
 
-const PracticalExp = () => {
+const PracticalExp = ({titleClass}) => {
   return (
     <div>
-        <h2 className='title'>Practical Experience</h2>
+        <h2 className={titleClass}>Practical Experience</h2>
         <div>
             <label htmlFor="company">Company: </label>
             <input id="company" type="text" />
