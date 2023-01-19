@@ -3,13 +3,13 @@ import Phone from './Phone'
 import Email from './Email'
 import './generalInfo.css'
 
-export default function GeneralInfo({titleClass, nameRef, phoneRef, emailRef}){
+export default function GeneralInfo({titleClass, refs}){
     return (
         <div>
             <h2 className={titleClass}>General Info</h2>
-            <Name forwardRef={nameRef} />
-            <Phone forwardRef={phoneRef} />
-            <Email forwardRef={emailRef} />
+            <Name forwardRef={refs["nameRef"]} />
+            <Phone forwardRef={refs["phoneRef"]} />
+            <Email forwardRef={refs["emailRef"]} />
         </div>
     )
 }
