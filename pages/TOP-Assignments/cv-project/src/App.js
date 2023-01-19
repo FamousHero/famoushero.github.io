@@ -1,10 +1,11 @@
 import './App.css';
-import './Components/General-Info/GeneralInfo'
 import GeneralInfo from './Components/General-Info/GeneralInfo';
+import PractExp from './Components/Practical Exp/PracticalExp';
 function App() {
   return (
     <div className="App">
         <GeneralInfo />
+        <PractExp />
     </div>
   );
 }
