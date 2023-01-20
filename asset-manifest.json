@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/pages/TOP-Assignments/cv-project/static/css/main.487a2708.css",
+    "main.js": "/pages/TOP-Assignments/cv-project/static/js/main.1ce833be.js",
+    "index.html": "/pages/TOP-Assignments/cv-project/index.html",
+    "main.487a2708.css.map": "/pages/TOP-Assignments/cv-project/static/css/main.487a2708.css.map",
+    "main.1ce833be.js.map": "/pages/TOP-Assignments/cv-project/static/js/main.1ce833be.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.487a2708.css",
+    "static/js/main.1ce833be.js"
+  ]
+}
