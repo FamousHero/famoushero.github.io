@@ -2,12 +2,14 @@ import './App.css';
 import GeneralInfo from './Components/General-Info/GeneralInfo';
 import Education from './Components/Education/Education';
 import PractExp from './Components/Practical Exp/PracticalExp';
-import SubmitButton from './Components/SubmitButton';
+import Button from './Components/Button';
 import CV from './Components/CV'
 import { useRef, useState } from 'react';
 
 function App() {
   const titleClass = 'title';
+  const [editMode, setEditMode] = useState(true);
+  const [buttonText, setButtonText] = useState('Submit');
   const genInfoRefs = {
     nameRef: useRef(),
     phoneRef: useRef(),
@@ -32,25 +34,28 @@ function App() {
   
   return (
     <div className="App">
+      {editMode?
       <form id="cv-form">
         <GeneralInfo titleClass={titleClass} refs={genInfoRefs}
         />
         <Education titleClass={titleClass} refs={edRefs} />
         <PractExp titleClass={titleClass} refs={pracExpRefs} />
-        <SubmitButton onClick={onSubmit}/>
-      </form>
-      {cvComp}
+      </form>: 
+      cvComp}
+      <Button text={buttonText} onClick={onSubmit}/>
     </div>
   );
 
   function onSubmit(e){
     e.preventDefault();
-    console.log(genInfoRefs["nameRef"]);
-    console.log('Education start: ', edRefs['startRef'].current.value);
-    console.log('Education end: ', edRefs['endRef'].current.value);
-    console.log('Practical Exp start: ', pracExpRefs['startRef'].current.value);
-    console.log('Practical Exp end: ', pracExpRefs['endRef'].current.value);
-    setCvComp(oldCV => <CV genInfoRefs={genInfoRefs} edRefs={edRefs} pracExpRefs={pracExpRefs} />);
+    setEditMode(editMode => !editMode); //value used on next click
+    if(editMode)
+    {
+      setButtonText(buttonText => 'Edit');
+      setCvComp(oldCV => <CV genInfoRefs={genInfoRefs} edRefs={edRefs} pracExpRefs={pracExpRefs} />);
+      return;
+    }
+    setButtonText(buttonText => 'Submit');
   }
 }
 
