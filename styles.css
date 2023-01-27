@@ -36,7 +36,7 @@ section{
     background-color: var(--main-bg-color);
     margin-bottom: 40px;
     padding: 0px 40px 40px 40px;
-    border-radius: 5px;
+    border-radius: 20px;
     position: relative;
 }
 
@@ -46,6 +46,7 @@ footer{
     font-size: large;
     padding: 10px;
     border-radius: var(--section-border-radius);
+    margin-bottom: 20px;
 }
 form{
     height: 100vh;
@@ -75,7 +76,7 @@ footer div .flexbox-container{
     gap: 20px;
 }
 #info{
-    padding: 10px 20px;
+    padding: 10px 0;
     font-family: "Courgette", "Sans-Serif";
     font-size: 1.8rem;
     font-style: italic;
@@ -109,6 +110,7 @@ footer div .flexbox-container{
     float: right;
     animation: mainAnim 2s;
     position: relative;
+    padding: 20px;
 }
 /*
     https://www.smashingmagazine.com/2020/03/setting-height-width-images-important-again/
