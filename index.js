@@ -29,6 +29,7 @@ var buttonHandlerProto = {
                 button.classList.add('checked');
                 this.index = button.dataset.showcase;
                 this.transformFlexbox(this.index);
+                this.initAutoScroll = false;
                 clearTimeout(this.TimeoutID);
                 if(!iframeMonitor){
                     iframeMonitor = monitorFunction();
@@ -85,8 +86,9 @@ function ButtonHandler(startButton, type, flexContainer, maxButtons){
     let currentButton = startButton;
     let TimeoutID = null;
     let index = 2;
+    let initAutoScroll = true;
 
-    return Object.assign(Object.create(buttonHandlerProto),{type, flexContainer, maxButtons, currentButton, TimeoutID, index});
+    return Object.assign(Object.create(buttonHandlerProto),{initAutoScroll, type, flexContainer, maxButtons, currentButton, TimeoutID, index});
 
 }
 /** 
@@ -118,6 +120,10 @@ function monitorFunction(){
 var iframeMonitor = monitorFunction();
 var activeIFrame = null;
 showcaseHandler.createEventListeners(showcaseButtons);
+
+var odinButtons = document.querySelectorAll('.odin-button');
+var odinHandler = createHandler('odin', '#TOP-Projects', odinButtons.length);
+odinHandler.createEventListeners(odinButtons);
 //touchstart intercepted on iOS when clicking iframe
 //results in continuted autoscroll so just toggle it when not iOS
 if(!iOS()){
@@ -127,8 +133,6 @@ if(!iOS()){
 /* TODO: only needs buttons when screen width too small,
 * also need to make the translate depend on divs in flexContainer
 */
-var odinButtons = document.querySelectorAll('.odin-button');
-var odinHandler = createHandler('odin', '#TOP-Projects', odinButtons.length);
-odinHandler.createEventListeners(odinButtons);
-setTimeout(()=>odinHandler.autoScroll(1), 2000);
+
+odinHander.initAutoScroll && setTimeout(()=>odinHandler.autoScroll(1), 2000);
 
