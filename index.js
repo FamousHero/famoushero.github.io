@@ -134,5 +134,5 @@ if(!iOS()){
 * also need to make the translate depend on divs in flexContainer
 */
 
-odinHander.initAutoScroll && setTimeout(()=>odinHandler.autoScroll(1), 2000);
+odinHandler.initAutoScroll && setTimeout(()=>odinHandler.autoScroll(1), 2000);
 
