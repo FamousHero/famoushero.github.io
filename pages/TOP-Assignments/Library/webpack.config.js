@@ -1,10 +1,25 @@
 const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 
 module.exports = {
-    entry: './library.js',
+    mode: 'development',
+    entry: {
+        bundle: path.resolve(__dirname, './library.js'),
+    },
     output: {
-        filename: 'main.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
+    },
+    devServer: {
+        static: {
+            directory: path.resolve(__dirname, 'dist')
+        },
+        port: 3000,
+        open: true,
+        hot: true,
+        compress: true,
+        historyApiFallback: true,
     },
     module: {
         rules: [
@@ -19,5 +34,12 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: 'Library App',
+            filename: 'index.html',
+            template: './index.html'
+        }),
+    ]
 };

@@ -2,10 +2,33 @@
 // i.e I can use popup without setting it to doc.getElementByID if they dont have
 //special characters (no space or hyphens)
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyABjXFVfrq7fZDq7ckTeTZxWjga3RTX5O8",
+  authDomain: "library-app-6dbd5.firebaseapp.com",
+  projectId: "library-app-6dbd5",
+  storageBucket: "library-app-6dbd5.appspot.com",
+  messagingSenderId: "975674829844",
+  appId: "1:975674829844:web:3491175ac793e8811fcb01"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+console.log(db);
+
 /******** Button Setup *********/
 
 
 const newBookButton = document.getElementById('new-book');
+console.log(newBookButton);
 newBookButton.addEventListener('click', ()=>{
     addBookButton.disabled = false;
     //if both are done in same poll then animation is skipped
@@ -92,6 +115,8 @@ function UpdateRead(){
     setData();
     updateDisplay();
 }
+
+/************Firebase Setup******************/
 
 
 /******** Functions *********/
