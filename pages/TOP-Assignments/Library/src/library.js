@@ -4,13 +4,17 @@
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
+//I know apiKey should be secret but only way to do that is 
+//with a backend and .env files (from what ive seen)
+//currently, github pages does not support backend/non-static files
+//so "it is what it is"
   apiKey: "AIzaSyABjXFVfrq7fZDq7ckTeTZxWjga3RTX5O8",
   authDomain: "library-app-6dbd5.firebaseapp.com",
   projectId: "library-app-6dbd5",
@@ -22,13 +26,27 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-console.log(db);
+const collRef = collection(db, 'books');
+const docs = getDocs(collRef)
+.then((snapshot) => {
+    let books = [];
+    snapshot.docs.forEach((doc)=>{
+        let data = doc.data();
+        books.push({...data, id: doc.id});
+        myLibrary.push(Book(data.title, data.author, data.pages, data.read));
+        console.log(myLibrary);
+    })
+    updateDisplay();
+    console.log(books);
+})
+.catch(err => {
+    console.log(err.message);
+});
 
 /******** Button Setup *********/
 
 
 const newBookButton = document.getElementById('new-book');
-console.log(newBookButton);
 newBookButton.addEventListener('click', ()=>{
     addBookButton.disabled = false;
     //if both are done in same poll then animation is skipped

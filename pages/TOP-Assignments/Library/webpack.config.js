@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
     mode: 'development',
     entry: {
-        bundle: path.resolve(__dirname, './library.js'),
+        bundle: path.resolve(__dirname, './src/library.js'),
     },
     output: {
         filename: '[name].js',
@@ -39,7 +39,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Library App',
             filename: 'index.html',
-            template: './index.html'
+            template: './src/index.html'
         }),
-    ]
+    ],
 };
