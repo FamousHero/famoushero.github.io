@@ -5,7 +5,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs, addDoc, 
-    orderBy, query, deleteDoc, doc
+    orderBy, query, deleteDoc, doc, updateDoc
  } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -33,7 +33,7 @@ const q  = query(collRef, orderBy("title"));
 getDocs(q).then((snapshot) => {
     snapshot.docs.forEach((doc)=>{
         let data = doc.data();
-        myLibrary.push(Book(data.title, data.author, data.pages, data.read));
+        myLibrary.push(Book(data.title, data.author, data.pages, data.read, doc.id));
     })
     console.log(myLibrary);
     updateDisplay();
@@ -81,8 +81,8 @@ let myLibrary = [];
 let readButtons = [];
 /******** Factory Functions *********/
 
-function Book(title, author, pages, read){
-    return Object.assign({}, {title, author, pages, read});
+function Book(title, author, pages, read, id){
+    return Object.assign({}, {title, author, pages, read, id});
 }
 
 
@@ -107,12 +107,11 @@ function addBookToLibrary(e){
 //function for read checkbox. named to allow removeEventListener
 function UpdateRead(){
     this.book.read = !this.book.read;
-    setData(this.book);
+    updateData(this.book);
     updateDisplay();
 }
 
 /************Firebase Setup******************/
-
 
 /******** Functions *********/
 
@@ -130,6 +129,9 @@ function updateDisplay(){
         tableLibrary.childNodes[2].remove();
         
     }
+    myLibrary.sort((a, b)=>{
+        return a.title >= b.title? 1: -1;
+    })
     for(let i = 0; i < myLibrary.length; ++i){
         createBookElement(myLibrary[i]);
     }
@@ -184,5 +186,15 @@ function setData(book){
         author: book.author,
         pages: book.pages,
         read: book.read, 
+    }).then(docRef => {
+        let i = myLibrary.indexOf(book)
+        myLibrary[i].id = docRef.id;
     });
+}
+
+function updateData(book){
+    console.log(book.id);
+    updateDoc(doc(db, `books/${book.id}`), {
+        read: book.read,
+    })
 }
