@@ -4,7 +4,9 @@
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, addDoc, 
+    orderBy, query, deleteDoc, doc
+ } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -27,17 +29,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const collRef = collection(db, 'books');
-const docs = getDocs(collRef)
-.then((snapshot) => {
-    let books = [];
+const q  = query(collRef, orderBy("title"));
+getDocs(q).then((snapshot) => {
     snapshot.docs.forEach((doc)=>{
         let data = doc.data();
-        books.push({...data, id: doc.id});
         myLibrary.push(Book(data.title, data.author, data.pages, data.read));
-        console.log(myLibrary);
     })
+    console.log(myLibrary);
     updateDisplay();
-    console.log(books);
 })
 .catch(err => {
     console.log(err.message);
@@ -80,32 +79,10 @@ clearLibraryButton.addEventListener('click', clearData);
 
 let myLibrary = [];
 let readButtons = [];
-const bookProto = {
-    info(){
-        let info = this.title + " by " + this.author + ", " +
-            this.pages + " pages, ";
-        if(this.read){
-            info += "read.";
-        }
-        else{
-            info += "not read yet. "
-        }
-        return info;
-    },
-}
-
 /******** Factory Functions *********/
 
 function Book(title, author, pages, read){
-    return Object.assign(Object.create(bookProto), {title, author, pages, read});
-    //Object.create is an empty object with __proto__ = proto making info() inherited.
-    //Object.assign takes iterables such as an object, iterates through them, and
-    //adds their key: value to the first argument.
-    //Visual:
-    // { __proto__: {info: function().... } } is first
-    // then this.title = title, this.author = author, ... are added to that object
-    // resulting in { title: title, author: author, ... , __proto__: {info: function()}}
-    // now this in info refers to calling object which is an instance of outer object.
+    return Object.assign({}, {title, author, pages, read});
 }
 
 
@@ -120,7 +97,7 @@ function addBookToLibrary(e){
         return;
     let newBook = Book(form.title.value, form.author.value, form.pages.value, form.read.checked);
     myLibrary.push(newBook);
-    setData();
+    setData(newBook);
     updateDisplay();
     form.reset();
     hidePopup();
@@ -130,7 +107,7 @@ function addBookToLibrary(e){
 //function for read checkbox. named to allow removeEventListener
 function UpdateRead(){
     this.book.read = !this.book.read;
-    setData();
+    setData(this.book);
     updateDisplay();
 }
 
@@ -188,20 +165,24 @@ function createBookElement(book){
 }
 
 
-function setData() {
-    localStorage.setItem(`myLibrary`, JSON.stringify(myLibrary));
-}
 function clearData(){
-    localStorage.removeItem('myLibrary');
     myLibrary = [];
+    getDocs(collRef).then((snapshot)=>{
+        snapshot.docs.forEach(doc =>{
+            deleteDoc(doc.ref);
+        })
+    }).catch((err)=>{
+        console.log(err.message);
+    });
     updateDisplay();
 }
-(()=>{
-    if(localStorage.myLibrary)
-    {
-        let objects = localStorage.getItem('myLibrary') // gets information from local storage to use in below loop to create DOM/display
-        objects = JSON.parse(objects);
-        myLibrary = objects;
-        updateDisplay();
-    }
-})();
+
+function setData(book){
+    console.log('adding book');
+    addDoc(collRef, {
+        title: book.title,
+        author: book.author,
+        pages: book.pages,
+        read: book.read, 
+    });
+}
