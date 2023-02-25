@@ -35,7 +35,6 @@ getDocs(q).then((snapshot) => {
         let data = doc.data();
         myLibrary.push(Book(data.title, data.author, data.pages, data.read, doc.id));
     })
-    console.log(myLibrary);
     updateDisplay();
 })
 .catch(err => {
@@ -49,28 +48,33 @@ const newBookButton = document.getElementById('new-book');
 newBookButton.addEventListener('click', ()=>{
     addBookButton.disabled = false;
     //if both are done in same poll then animation is skipped
-    popup.style.display = 'block';
-    setTimeout(()=>popup.classList.remove('hidden'), 1);
+    popups[1].style.display = 'block';
+    setTimeout(()=>popups[1].classList.remove('hidden'), 1);
 });
 
 const addBookButton = document.getElementById('add-book');
 addBookButton.addEventListener('click', addBookToLibrary);
 
-function hidePopup(){
+function hidePopup(popup){
     popup.classList.add('hidden');
     addBookButton.disabled = true;
     setTimeout(()=>popup.style.display = 'none', 500);
 }
-const popup = document.getElementById('popup');
-popup.addEventListener('click', hidePopup);
+const popups = document.querySelectorAll('.popup');
+popups[1].addEventListener('click', (e) => hidePopup(e.target));
 
-const bookInfo = document.getElementById('book-info');
-bookInfo.addEventListener('click', (e)=>{
-    if(e.target.tagName === 'SPAN'){
-        document.getElementById('pages-input').focus();
-    }
-    e.stopPropagation();
+const inputForms = document.querySelectorAll('.inputs');
+inputForms.forEach(form => {
+    form.addEventListener('click', (e)=>{
+        e.stopPropagation();
+    })
 });
+const userForm = inputForms[0];
+userForm.addEventListener('submit', e=>{
+    e.preventDefault();
+    hidePopup(popups[0]);
+    console.log('signed in');
+})
 
 const clearLibraryButton = document.getElementById('clear-library');
 clearLibraryButton.addEventListener('click', clearData);
@@ -100,7 +104,7 @@ function addBookToLibrary(e){
     setData(newBook);
     updateDisplay();
     form.reset();
-    hidePopup();
+    hidePopup(popups[1]); //the addbook popup
     
 }
 
@@ -118,7 +122,7 @@ function UpdateRead(){
 //cant use for...in since we need to ignore the header row
 //TODO: use classes on the elements to improve readability 
 function updateDisplay(){
-    const tableLibrary = document.getElementById('library').firstChild.nextSibling;
+    const tableLibrary = document.getElementById('library').firstChild;
     //childNodes is live so get the starting length
     const startLen = tableLibrary?tableLibrary.childNodes.length: 0;
     for(let i = 2; i < startLen; ++i)
@@ -163,7 +167,7 @@ function createBookElement(book){
 
     readCell.append(readCellCheckbox);
     tableRow.append(titleCell, authorCell, pagesCell, readCell);
-    tableLibrary.firstChild.nextSibling.appendChild(tableRow);
+    tableLibrary.firstChild.appendChild(tableRow);
 }
 
 
@@ -180,7 +184,6 @@ function clearData(){
 }
 
 function setData(book){
-    console.log('adding book');
     addDoc(collRef, {
         title: book.title,
         author: book.author,
@@ -193,7 +196,6 @@ function setData(book){
 }
 
 function updateData(book){
-    console.log(book.id);
     updateDoc(doc(db, `books/${book.id}`), {
         read: book.read,
     })

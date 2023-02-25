@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="library.css">
 </head>
 <body>
-    <div class="main">
+    <main>
         <table id="library">
             <tr>
                 <th>Title</th>
@@ -22,14 +22,27 @@
             <button id="new-book">+</button> 
             <button id="clear-library">Clear Library</button>
         </div>
+    </main>
+    <div class= "popup">
+        <div class="inputs">
+            <form id='login' action="#">
+                <div class="row">
+                    <label class="username" for="username-input">Username: </label>
+                    <input id="username-input" name="username" type="text" 
+                    placeholder="Enter your username or create a new user" 
+                    title="Enter your username or create a new user" required>
+
+                </div>
+            </form>
+        </div>
     </div>
-    <div id="popup" class= "hidden" style="display: none;">
-        <div id="book-info">
+    <div class= "popup hidden" style="display: none;">
+        <div id="book-info" class="inputs">
             <form id='form' action="#">
                 <div class="row"><label class="data" for="title-input">Title</label><input id="title-input" name="title" class="data" type="text" required></div>
                 <div class="row"><label class="data" for="author-input">Author</label><input id="author-input" name="author" class="data" type="text" required></div>
-                <div class="pages-row row"><label class="data" for="pages-input">Pages</label><input id="pages-input"name="pages" class="data" type="tel" pattern="^[0-9]+$"title="Please enter 
-                    the number of pages (i.e. 123)" required>
+                <div class="row"><label class="data" for="pages-input">Pages</label><input id="pages-input"name="pages" class="data" type="tel" pattern="^[0-9]+$"
+                    title="Please enter the number of pages (i.e. 123)" required>
                 </div>
                 <div class="row"><label class="data" for="read-input">Read Yet</label><input id="read-input" name="read" class="data" type="checkbox"></div>
                 <div class="button-container">
