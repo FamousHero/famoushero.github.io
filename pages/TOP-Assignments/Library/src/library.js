@@ -124,8 +124,10 @@ const firebaseConfig = {
                 });
             }
             else{
-                console.log('empty query');
+                let userRef = await addDoc(collRef, {username});
+                usersBookCollection = await collection(db, `users/${userRef.id}/books`);
             }
+            console.log(usersBookCollection.path);
         }
         catch(e){
             console.log(e);
@@ -142,12 +144,12 @@ function updateDisplay(){
     const tableLibrary = document.getElementById('library').firstChild;
     //childNodes is live so get the starting length
     const startLen = tableLibrary?tableLibrary.childNodes.length: 0;
-    for(let i = 2; i < startLen; ++i)
+    for(let i = 1; i < startLen; ++i)
     {
         //remove the event listener to allow garbage collection
-        readButtons[i-2].removeEventListener('click', UpdateRead);
+        readButtons[i-1].removeEventListener('click', UpdateRead);
         //since its live, every remove moves the next node down so index is constant
-        tableLibrary.childNodes[2].remove();
+        tableLibrary.childNodes[1].remove();
         
     }
     myLibrary.sort((a, b)=>{
@@ -224,6 +226,8 @@ function setData(book){
 }
 
 function updateData(book){
+    console.log(document.getElementById('library').firstChild.childNodes[0]);
+    console.log(document.getElementById('library').firstChild.childNodes[1]);
     updateDoc(doc(db, `${usersBookCollection.path}/${book.id}`), {
         read: book.read,
     })
