@@ -5,41 +5,13 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs, addDoc, 
-    orderBy, query, deleteDoc, doc, updateDoc
+ query, deleteDoc, doc, updateDoc, where
  } from "firebase/firestore";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+/******** Global Variables *********/
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-//I know apiKey should be secret but only way to do that is 
-//with a backend and .env files (from what ive seen)
-//currently, github pages does not support backend/non-static files
-//so "it is what it is"
-  apiKey: "AIzaSyABjXFVfrq7fZDq7ckTeTZxWjga3RTX5O8",
-  authDomain: "library-app-6dbd5.firebaseapp.com",
-  projectId: "library-app-6dbd5",
-  storageBucket: "library-app-6dbd5.appspot.com",
-  messagingSenderId: "975674829844",
-  appId: "1:975674829844:web:3491175ac793e8811fcb01"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const collRef = collection(db, 'books');
-const q  = query(collRef, orderBy("title"));
-getDocs(q).then((snapshot) => {
-    snapshot.docs.forEach((doc)=>{
-        let data = doc.data();
-        myLibrary.push(Book(data.title, data.author, data.pages, data.read, doc.id));
-    })
-    updateDisplay();
-})
-.catch(err => {
-    console.log(err.message);
-});
+let myLibrary = [];
+let readButtons = [];
 
 /******** Button Setup *********/
 
@@ -72,17 +44,14 @@ inputForms.forEach(form => {
 const userForm = inputForms[0];
 userForm.addEventListener('submit', e=>{
     e.preventDefault();
+    getUserDocs(login.username.value);
     hidePopup(popups[0]);
-    console.log('signed in');
 })
 
 const clearLibraryButton = document.getElementById('clear-library');
 clearLibraryButton.addEventListener('click', clearData);
 
-/******** Global Variables *********/
 
-let myLibrary = [];
-let readButtons = [];
 /******** Factory Functions *********/
 
 function Book(title, author, pages, read, id){
@@ -116,6 +85,54 @@ function UpdateRead(){
 }
 
 /************Firebase Setup******************/
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    //I know apiKey should be secret but only way to do that is 
+    //with a backend and .env files (from what ive seen)
+    //currently, github pages does not support backend/non-static files
+    //so "it is what it is"
+      apiKey: "AIzaSyABjXFVfrq7fZDq7ckTeTZxWjga3RTX5O8",
+      authDomain: "library-app-6dbd5.firebaseapp.com",
+      projectId: "library-app-6dbd5",
+      storageBucket: "library-app-6dbd5.appspot.com",
+      messagingSenderId: "975674829844",
+      appId: "1:975674829844:web:3491175ac793e8811fcb01"
+    };
+    
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const collRef = collection(db, 'users');
+    let usersBookCollection = null;
+    
+    async function getUserDocs(username){
+        try{
+            const q = query(collRef, where('username', '==', username));
+            let docs = await getDocs(q);
+            if(!docs.empty){
+                let userID = docs.docs[0].id;
+                usersBookCollection = await collection(db, `users/${userID}/books`);
+                getDocs(usersBookCollection)
+                .then((snapshot) => {
+                    snapshot.docs.forEach((doc)=>{
+                        let data = doc.data();
+                        myLibrary.push(Book(data.title, data.author, data.pages, data.read, doc.id));
+                    })
+                    updateDisplay();
+                }).catch(err => {
+                    console.log(err.message);
+                });
+            }
+            else{
+                console.log('empty query');
+            }
+        }
+        catch(e){
+            console.log(e);
+        }
+
+    }
+
 
 /******** Functions *********/
 
@@ -173,30 +190,41 @@ function createBookElement(book){
 
 function clearData(){
     myLibrary = [];
-    getDocs(collRef).then((snapshot)=>{
-        snapshot.docs.forEach(doc =>{
-            deleteDoc(doc.ref);
-        })
-    }).catch((err)=>{
-        console.log(err.message);
-    });
-    updateDisplay();
+    if(usersBookCollection){
+        getDocs(usersBookCollection).then((snapshot)=>{
+            snapshot.docs.forEach(doc =>{
+                deleteDoc(doc.ref);
+            })
+        }).catch((err)=>{
+            console.log(err.message);
+        });
+        updateDisplay();
+    }
+    else{
+        console.log('Not connected to a user account')
+    }
 }
 
 function setData(book){
-    addDoc(collRef, {
-        title: book.title,
-        author: book.author,
-        pages: book.pages,
-        read: book.read, 
-    }).then(docRef => {
-        let i = myLibrary.indexOf(book)
-        myLibrary[i].id = docRef.id;
-    });
+    if(usersBookCollection){
+        console.log(usersBookCollection.path);
+        addDoc(usersBookCollection, {
+            title: book.title,
+            author: book.author,
+            pages: book.pages,
+            read: book.read, 
+        }).then(docRef => {
+            let i = myLibrary.indexOf(book)
+            myLibrary[i].id = docRef.id;
+        });
+    }
+    else{
+        console.log('Not connected to a user account')
+    }
 }
 
 function updateData(book){
-    updateDoc(doc(db, `books/${book.id}`), {
+    updateDoc(doc(db, `${usersBookCollection.path}/${book.id}`), {
         read: book.read,
     })
 }
