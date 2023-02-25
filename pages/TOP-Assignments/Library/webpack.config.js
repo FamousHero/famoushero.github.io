@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: {
         bundle: path.resolve(__dirname, './src/library.js'),
     },
@@ -43,4 +43,5 @@ module.exports = {
             template: './src/index.html'
         }),
     ],
+    watch: true
 };
