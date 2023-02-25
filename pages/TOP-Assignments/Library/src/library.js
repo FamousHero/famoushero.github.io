@@ -120,7 +120,7 @@ function UpdateRead(){
 function updateDisplay(){
     const tableLibrary = document.getElementById('library').firstChild.nextSibling;
     //childNodes is live so get the starting length
-    const startLen = tableLibrary.childNodes.length
+    const startLen = tableLibrary?tableLibrary.childNodes.length: 0;
     for(let i = 2; i < startLen; ++i)
     {
         //remove the event listener to allow garbage collection
