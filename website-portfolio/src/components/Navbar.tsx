@@ -1,8 +1,8 @@
 import React from 'react'
 const navList = [
-  {title: 'About'},
-  {title: 'Projects'},
-  {title: 'Socials'}
+  {title: 'About', href: "#About"},
+  {title: 'Projects', href: "#Projects"},
+  {title: 'Socials', href: "#Socials"}
 ]
 
 const Navbar = () => {
@@ -13,8 +13,12 @@ const Navbar = () => {
         let classes = 'rounded-md px-3 py-2 text-small font-medium text-gray-300 \
         focus:bg-gray-900 focus:text-white hover:bg-neutral-800/50 hover:text-white \
         '
+        //Want the focus of a button and functionality of a tag 
+        //Didn't want to make a click function just for that
         return ( <button key={index} className= {classes}>
-                {item.title}
+                  <a href={item.href}>
+                    {item.title}
+                  </a>
                 </button>)
         }
         )}
