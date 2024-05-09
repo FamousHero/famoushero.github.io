@@ -1,7 +1,9 @@
 {
     "Projects": [
-        {"name": "Spotify Playlist Search", "description": "", "gallery": []},
-        {"name": "AI Trainer", "description": "", "gallery": []},
-        {"name": "Memory Game", "description": "", "gallery": []}
+        {"name": "Spotify Playlist Search", "gallery": [],
+        "description": "A playlist searching app that leaverages spotify api to go through a users playlist and find which ones contain a given song."
+        },     
+        {"name": "AI Trainer", "description": "Capstone Project made ---- -- - --- - - --. Worked with a team of 5 to create a FPS Hoard shooter in Unity.", "gallery": []},
+        {"name": "Memory Game", "description": "Card game made in React for The Odin Project's bootcamp. Uses local-storage to keep players high-score.", "gallery": []}
     ]
 }
