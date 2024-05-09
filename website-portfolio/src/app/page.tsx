@@ -1,20 +1,13 @@
 import Image from 'next/image'
-import Project from '@/components/Project'
-import Projects from './Projects.json' assert {type : 'json'}
+
+import About from '@/components/About'
+import Projects_container from '@/components/Projects_container'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <section className='flex justify-around w-[80%]' id="Projects">
-        {
-          Projects["Projects"].map((project, i) =>
-            (
-              <Project key={i} name={project.name} description={project.description}
-              gallery={project.gallery}></Project>
-            )
-          )
-        }
-      </section>
+    <main className="min-h-screen">
+      <About/>
+      <Projects_container/> 
     </main>
   )
 }
