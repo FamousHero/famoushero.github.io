@@ -65,7 +65,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            .next/cache
+            ./website-portfolio/.next/cache
           # Generate a new cache whenever packages or source files change.
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/website-portfolio/package-lock.json', '**/website-portfolio/yarn.lock') }}-${{ hashFiles('**/website-portfolio.[jt]s', '**/website-portfolio.[jt]sx') }}
           # If source files changed but packages didn't, rebuild from a prior cache.
@@ -84,7 +84,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./website-portfolio/out
 
   # Deployment job
   deploy:
