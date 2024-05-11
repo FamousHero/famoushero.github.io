@@ -7,9 +7,9 @@ let refs = [{name: "Linkedin", href: "https://www.linkedin.com/in/dahf/"},
 function Socials() {
   return (
     <section className='flex justify-center items-center gap-12 py-10'>
-        {refs.map((ref)=>
+        {refs.map((ref, index)=>
                 (
-                    <a href={ref.href} className='hover:text-cyan-500'>{ref.name}</a>
+                    <a href={ref.href} key={index} className='hover:text-cyan-500'>{ref.name}</a>
                 )
             )
         }

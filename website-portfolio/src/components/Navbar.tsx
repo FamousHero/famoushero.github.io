@@ -15,7 +15,7 @@ const Navbar = () => {
         '
         //Want the focus of a button and functionality of a tag 
         //Didn't want to make a click function just for that
-        return (  <a className={classes} href={item.href}>
+        return (  <a key={index} className={classes} href={item.href}>
                     {item.title}
                   </a>
                )
