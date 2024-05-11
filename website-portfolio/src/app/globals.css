@@ -31,3 +31,9 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.text-fade{
+  background: -webkit-linear-gradient(#fff, #a3a3a3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
