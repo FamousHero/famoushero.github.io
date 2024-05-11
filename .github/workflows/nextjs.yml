@@ -34,6 +34,7 @@ jobs:
       - name: Detect package manager
         id: detect-package-manager
         run: |
+          cd website-portfolio
           if [ -f "${{ github.workspace }}/website-portfolio/yarn.lock" ]; then
             echo "manager=yarn" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
@@ -73,7 +74,6 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/website-portfolio/package-lock.json', '**/website-portfolio/yarn.lock') }}-
       - name: Install dependencies
         run: |
-          cd website-portfolio
           ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: |
