@@ -1,6 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
-
+/** TODO: Fix for mobile
+ * Currently working for 1200p and above
+ */
 function About() {
   return (
     
