@@ -6,7 +6,7 @@ import Image from 'next/image'
 function About() {
   return (
     
-    <section className='flex mix-blend-difference justify-center items-center gap-12'>
+    <section className='flex justify-center items-center gap-12'>
         <Image className='ml-24 mt-10'src="/pfp.jpg" alt="Profile Picture" width={720} height={720}></Image>
         <p className='pr-24 tracking-wider'>
             Hello, my name is Daniel. <br/>
