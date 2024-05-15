@@ -1,5 +1,5 @@
 'use client'
- import { useEffect } from 'react'
+ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Head from 'next/head'
 import About from '@/components/About'
@@ -8,21 +8,30 @@ import Socials from '@/components/Socials'
 import {headers} from 'next/headers'
 
 export default function Home() {
-  const IPFetch = useEffect(() =>{
-  const fetchData = async () =>{
-    const res = (await fetch("https://api.ipify.org?format=json")).json();
-    if(!res){
-      throw new Error('Failed to fetch');
+  const [IP, setIP] = useState<string>("");
+
+  useEffect(() =>{
+    const fetchData = async () =>{
+      //Get client ip from ipify.org
+      try{  
+        const res = await fetch("https://api.ipify.org?format=json");
+        const data = await res.json();
+        //extract ip from returned json
+        console.log(data);
+        setIP(oldIP => {return data["ip"]});    
+      }
+      catch{
+        console.log('Promise failed: ip not received')
+      }
     }
-    return res;
-  }
-},[])
+    fetchData().catch(console.error);
+  },[]);
   return (
     <main className="min-h-screen">
       <Head>
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
-      <h1 id='About' className='pt-[100px] text-center text-3xl text-fade font-bold'>About {JSON.stringify(IPFetch)}</h1>
+      <h1 id='About' className='pt-[100px] text-center text-3xl text-fade font-bold'>About {IP}</h1>
       <About/>
       <h1 id='Projects' className='pt-[100px] text-center text-3xl text-fade font-bold'>Projects</h1>
       <Projects_container/>
