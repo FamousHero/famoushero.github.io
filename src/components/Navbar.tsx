@@ -11,11 +11,11 @@ const Navbar = () => {
   return (
   
     <header className='w-full fixed z-10 bg-black text-white  py-4 border-b-2 border-white/70'>
-      <nav className='mx-24 flex justify-around gap-6 px-2 '>
+      <nav className='px-24  h-[40px] flex justify-around gap-6'>
         <div>
 
         {navList.map((item, index)=>{
-          let classes = 'rounded-md w-[80px] h-[40px] px-3 py-2 text-small font-medium text-gray-300 \
+          let classes = 'rounded-md w-[80px] px-3 py-2 text-small font-medium text-gray-300 \
           hover:bg-neutral-800/50 hover:text-white \
           '
           //Want the focus of a button and functionality of a tag 
@@ -27,7 +27,7 @@ const Navbar = () => {
               }
             )}
         </div>
-        <div>
+        <div className='hidden sm:inline'>
           Computer Scientist | Software Engineer
         </div>
       </nav>

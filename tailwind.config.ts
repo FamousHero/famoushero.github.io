@@ -8,7 +8,9 @@ const config: Config = {
   ],
   theme: {
     screens: {
-      '3xl': '1670px'
+      '3xl': '1670px',
+      '1200px': '1200px', 
+      'sm': '630px'
     },
     extend: {
       backgroundImage: {

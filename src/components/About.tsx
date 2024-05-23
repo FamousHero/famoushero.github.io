@@ -6,10 +6,10 @@ import Image from 'next/image'
 function About() {
   return (
     
-    <section className='flex justify-center items-center gap-12'>
-        <Image className='ml-24 mt-10'src="/pfp.jpg" alt="Profile Picture" width={720} height={720}></Image>
-        <p className='pr-24 tracking-wider'>
-            Hello, my name is Daniel. <br/>
+    <section className='flex flex-wrap  1200px:flex-nowrap justify-center items-center gap-12'>
+        <Image className='w-[80%] 1200px:w-fit 1200px:ml-24 mt-10'src="/pfp.jpg" alt="Profile Picture" width={720} height={720}></Image>
+        <p className='px-4 text-center 1200px:text-left 1200px:px-24 tracking-wider inline-block'>
+            <span className=' font-xl font-semibold 1200px:text-left '>Hello, my name is Daniel.</span><br/>
             I am a Computer Game Science graduate from the University of California, Irvine. 
             My hobbies include going to the gym, expanding my knowledge of computers, and taking my dogs out on walks.
             I have created projects in web development, game development and software develpment.
