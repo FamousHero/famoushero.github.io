@@ -1,6 +1,6 @@
 {
     "Projects": [
-        {"name": "Spotify Playlist Search", "gallery": ["/Playlist_Search.jpg", "/Playlist_Search2.jpg", "/Playlist_Search3.jpg"], "href": "https://youtu.be/OPiJ_6lY57M",
+        {"name": "Spotify Playlist Search", "gallery": ["/Playlist_Search.jpg", "/Playlist_Search2.jpg", "/Playlist_Search3.jpg"], "href": "https://www.youtube.com/watch?v=MTGOPpr9Tb8",
         "description": "A playlist searching app that leaverages spotify api to go through a users playlist and find which ones contain a given song. Impemented in Python3 and uses tkinter for Graphics. "
         },     
         {"name": "AI Trainer", "description": "Capstone Project made in Unreal. Responsible for scene lighting, healthbar, weapon and drop mechanics. Led a team of 3 in a SCRUM environment to meet dealines and update our Project Manager.",
