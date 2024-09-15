@@ -1,9 +1,12 @@
 {
     "Projects": [
+        {"name": "Wave Simulation", "gallery": ["/Wave_Sim.jpg"], "href": "https://www.youtube.com/watch?v=Rv_4ksxaYn0",
+        "description": "A ocean wave simulation created using p5.js. Done by manipulating frequency & amplitude of sin(x)."
+        }, 
         {"name": "Spotify Playlist Search", "gallery": ["/Playlist_Search.jpg", "/Playlist_Search2.jpg", "/Playlist_Search3.jpg"], "href": "https://www.youtube.com/watch?v=MTGOPpr9Tb8",
-        "description": "A playlist searching app that leaverages spotify api to go through a users playlist and find which ones contain a given song. Impemented in Python3 and uses tkinter for Graphics. "
+        "description": "A playlist searching app that leverages spotify api to go through a users playlist and find which ones contain a given song. Implemented in Python3 and uses tkinter for Graphics. "
         },     
-        {"name": "AI Trainer", "description": "Capstone Project made in Unreal. Responsible for scene lighting, healthbar, weapon and drop mechanics. Led a team of 3 in a SCRUM environment to meet dealines and update our Project Manager.",
+        {"name": "AI Trainer", "description": "Capstone Project made in Unreal. Responsible for scene lighting, healthbar, weapon and drop mechanics. Led a team of 3 in a SCRUM environment to meet deadlines and update our Project Manager.",
          "gallery": ["/AI_trainer.jpg", "/AI_Trainer2.jpg", "/AI_Trainer3.jpg"], "href": "https://youtu.be/PWefbIkZHlo"},
         {"name": "Memory Game", "description": "Card game made in React as part of The Odin Project's Web Development course. Uses local-storage to keep players high-score.", 
         "gallery": ["/Memory_Game.jpg", "/Memory_Game2.jpg", "/Memory_Game3.jpg"], "href": "https://famoushero.github.io/memory-card/"}
