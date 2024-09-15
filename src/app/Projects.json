@@ -2,17 +2,17 @@
     "Projects": [
         {"name": "Wave Simulation", "gallery": ["/Wave_Sim.png"], "href": "https://www.youtube.com/watch?v=Rv_4ksxaYn0",
           "description": "A ocean wave simulation created using p5.Js. Done by manipulating frequency & amplitude of sin(x).",
-          "repo": "https://github.com/FamousHero/BouncyBounce"
+          "repo": "https://github.com/FamousHero/BouncyBounce", "site": ""
         }, 
         {"name": "Spotify Playlist Search", "gallery": ["/Playlist_Search.jpg", "/Playlist_Search2.jpg", "/Playlist_Search3.jpg"], "href": "https://www.youtube.com/watch?v=MTGOPpr9Tb8",
           "description": "A playlist searching app that leverages spotify api to go through a users playlist and find which ones contain a given song. Implemented in Python3 and uses tkinter for Graphics. ",
-          "repo": "TBA"
+          "repo": "TBA", "site": "https://www.searchthissong.com"
         },     
         {"name": "AI Trainer", "description": "Capstone Project made in Unreal. Responsible for scene lighting, healthbar, weapon and drop mechanics. Led a team of 3 in a SCRUM environment to meet deadlines and update our Project Manager.",
           "gallery": ["/AI_trainer.jpg", "/AI_Trainer2.jpg", "/AI_Trainer3.jpg"], "href": "https://youtu.be/PWefbIkZHlo",
-          "repo": "https://github.com/FamousHero/AI-Trainer"},
+          "repo": "https://github.com/FamousHero/AI-Trainer", "site": ""},
         {"name": "Memory Game", "description": "Card game made in React as part of The Odin Project's Web Development course. Uses local-storage to keep players high-score.", 
-          "gallery": ["/Memory_Game.jpg", "/Memory_Game2.jpg", "/Memory_Game3.jpg"], "href": "https://famoushero.github.io/memory-card-game/",
-          "repo": "https://github.com/FamousHero/AI-Trainer"}
+          "gallery": ["/Memory_Game.jpg", "/Memory_Game2.jpg", "/Memory_Game3.jpg"], "href": "https://youtu.be/ky9rw_mgKVU",
+          "repo": "https://github.com/FamousHero/memory-card-game", "site": "https://famoushero.github.io/memory-card-game"}
     ]
 }
