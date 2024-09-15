@@ -9,6 +9,6 @@
         {"name": "AI Trainer", "description": "Capstone Project made in Unreal. Responsible for scene lighting, healthbar, weapon and drop mechanics. Led a team of 3 in a SCRUM environment to meet deadlines and update our Project Manager.",
          "gallery": ["/AI_trainer.jpg", "/AI_Trainer2.jpg", "/AI_Trainer3.jpg"], "href": "https://youtu.be/PWefbIkZHlo"},
         {"name": "Memory Game", "description": "Card game made in React as part of The Odin Project's Web Development course. Uses local-storage to keep players high-score.", 
-        "gallery": ["/Memory_Game.jpg", "/Memory_Game2.jpg", "/Memory_Game3.jpg"], "href": "https://famoushero.github.io/memory-card/"}
+        "gallery": ["/Memory_Game.jpg", "/Memory_Game2.jpg", "/Memory_Game3.jpg"], "href": "https://famoushero.github.io/memory-card-game/"}
     ]
 }
