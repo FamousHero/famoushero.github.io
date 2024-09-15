@@ -9,7 +9,7 @@ function Projects_container() {
           Projects["Projects"].map((project, i) =>
             (
               <Project key={i} name={project.name} description={project.description}
-              gallery={project.gallery} href={project.href}></Project>
+              gallery={project.gallery} href={project.href} repo={project.repo}></Project>
             )
           )
         }

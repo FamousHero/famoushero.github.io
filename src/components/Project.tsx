@@ -5,14 +5,18 @@ interface ProjectProps {
     gallery: Array<string>,
     description: string,
     href: string,
+    repo: string,
 }
 // h-fit rounded text-center hover:bg-gray-700 p-2
-function Project({name, gallery, description, href}: ProjectProps) {
+function Project({name, gallery, description, repo, href}: ProjectProps) {
   return (
     <div className='text-center hover:bg-gray-700 p-2 1300px:w-[720px] 1200px:rounded'>
         <a href={href}>
           <h2 className='border-b-2 text-2xl border-gray-400/60'>{name}</h2>
           <p className="mt-4 mb-2">{description}</p>
+          <p className="mt-4 mb-2">
+            Repo: {repo === "TBA"? repo: <a className="hover:text-red-800" href={repo}>{repo}</a>}
+            </p>
           <Image className="w-[80%] mx-auto"src={gallery[0]} alt="" width={720} height={422}></Image>
               {/**map through gallery and create jsx */}
         </a>

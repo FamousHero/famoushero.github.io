@@ -37,3 +37,6 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+p>a{
+  color: rgb(64, 139, 224);
+}
