@@ -1,7 +1,7 @@
 {
     "Projects": [
-        {"name": "Wave Simulation", "gallery": ["/Wave_Sim.jpg"], "href": "https://www.youtube.com/watch?v=Rv_4ksxaYn0",
-        "description": "A ocean wave simulation created using p5.js. Done by manipulating frequency & amplitude of sin(x)."
+        {"name": "Wave Simulation", "gallery": ["/Wave_Sim.png"], "href": "https://www.youtube.com/watch?v=Rv_4ksxaYn0",
+        "description": "A ocean wave simulation created using p5.Js. Done by manipulating frequency & amplitude of sin(x)."
         }, 
         {"name": "Spotify Playlist Search", "gallery": ["/Playlist_Search.jpg", "/Playlist_Search2.jpg", "/Playlist_Search3.jpg"], "href": "https://www.youtube.com/watch?v=MTGOPpr9Tb8",
         "description": "A playlist searching app that leverages spotify api to go through a users playlist and find which ones contain a given song. Implemented in Python3 and uses tkinter for Graphics. "
