@@ -1,4 +1,4 @@
-i{
+{
     "Projects": [
         {"name": "Wave Simulation", "gallery": ["/Wave_Sim.png"], "href": "https://www.youtube.com/watch?v=Rv_4ksxaYn0",
           "description": "A ocean wave simulation created using p5.Js. Done by manipulating frequency & amplitude of sin(x).",
