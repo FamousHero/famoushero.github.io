@@ -1,4 +1,4 @@
-{
+i{
     "Projects": [
         {"name": "Wave Simulation", "gallery": ["/Wave_Sim.png"], "href": "https://www.youtube.com/watch?v=Rv_4ksxaYn0",
           "description": "A ocean wave simulation created using p5.Js. Done by manipulating frequency & amplitude of sin(x).",
@@ -6,7 +6,7 @@
         }, 
         {"name": "Spotify Playlist Search", "gallery": ["/Playlist_Search.jpg", "/Playlist_Search2.jpg", "/Playlist_Search3.jpg"], "href": "https://www.youtube.com/watch?v=MTGOPpr9Tb8",
           "description": "A playlist searching app that leverages spotify api to go through a users playlist and find which ones contain a given song. Implemented in Python3 and uses tkinter for Graphics. ",
-          "repo": "TBA", "site presentation": "https://youtu.be/MTGOPpr9Tb8"
+          "repo": "TBA", "site": "https://youtu.be/MTGOPpr9Tb8"
         },     
         {"name": "AI Trainer", "description": "Capstone Project made in Unreal. Responsible for scene lighting, healthbar, weapon and drop mechanics. Led a team of 3 in a SCRUM environment to meet deadlines and update our Project Manager.",
           "gallery": ["/AI_trainer.jpg", "/AI_Trainer2.jpg", "/AI_Trainer3.jpg"], "href": "https://youtu.be/PWefbIkZHlo",
