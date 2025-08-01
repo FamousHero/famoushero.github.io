@@ -15,7 +15,7 @@ function About() {
             I have created projects in web development, game development and software develpment.
             My current focus is on taking my CompTIA Security+ Exam and learning the different vulerabilities and exploits 
             in both web development and software development. If you&apos;d like to reach out to me I am available on Linkedin 
-            or @ gmail.
+            or @ gmail. The cycle of hate ends with me ❤️.
         </p>
     </section>
   )
